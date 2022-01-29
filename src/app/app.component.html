@@ -1,1 +1,11 @@
-<button mat-raised-button color="primary">Test me!!</button>
+<div class="application">
+  <app-header></app-header>
+  <mat-drawer-container class='sidenav'>
+    <mat-drawer mode="side" opened>
+      <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class='body'>router outlet</div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

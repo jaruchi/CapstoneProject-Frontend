@@ -1,0 +1,23 @@
+.application {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  
+  app-header {
+    flex: 0;
+  }
+  .sidenav {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-content: flex-start;
+    width: 100vw;
+  }
+}
