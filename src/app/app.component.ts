@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from './model/user';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'CUMI';
-  constructor(private router: ActivatedRoute) { }
+  user!: User;
+  constructor(private router: Router, private loginSvc: LoginService) {}
   ngOnInit(): void {
-     
+    this.loginSvc.init().subscribe((u) => (this.user = u));
   }
-  toggle():void {
-  }
+  toggle(): void {}
 }

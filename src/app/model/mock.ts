@@ -62,4 +62,4 @@ export const openApplications = [
     id: 6,
     heading: 'baby sit',
   },
-];
+]; 

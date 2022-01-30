@@ -7,7 +7,7 @@
   overflow: hidden;
   height: 100vh;
   width: 100vw;
-  
+
   app-header {
     flex: 0;
   }
@@ -19,5 +19,18 @@
     justify-content: flex-start;
     align-content: flex-start;
     width: 100vw;
+  }
+  .drawer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .please-login-first {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

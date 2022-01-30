@@ -1,10 +1,11 @@
 <mat-toolbar>
-  <button mat-icon-button>
+  <button mat-icon-button [disabled]="user.userName === ''">
     <mat-icon>menu</mat-icon>
   </button>
   <span><a routerLink="/">CUMI</a></span>
   <span class="example-spacer"></span>
   <button mat-icon-button>
+    <span *ngIf="smartUser$|async as smartUser">{{smartUser.userName}}</span>
     <a routerLink="/login">
       <mat-icon>person</mat-icon>
     </a>

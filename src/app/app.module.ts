@@ -18,6 +18,9 @@ import { TutorRequirementComponent } from './component/jobtype/tutor-requirement
 import { TutorApplicationComponent } from './component/jobtype/tutor-application/tutor.component';
 import { OpenApplicationsComponent } from './component/open-applications/open-applications.component';
 import { OpenRequirementsComponent } from './component/open-requirements/open-requirements.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './component/register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { OpenRequirementsComponent } from './component/open-requirements/open-re
     TutorRequirementComponent,
     OpenApplicationsComponent,
     OpenRequirementsComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,8 @@ import { OpenRequirementsComponent } from './component/open-requirements/open-re
     BrowserAnimationsModule,
     MaterialModule,
     MatSelectModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

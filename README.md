@@ -6,6 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # Resources
 - https://www.youtube.com/watch?v=jUfEn032IL8
 - https://stackblitz.com/edit/angular-material-based-login-form?file=src%2Fstyles.css
+https://blog.angular-university.io/angular-http/
 
 
 ## Development server

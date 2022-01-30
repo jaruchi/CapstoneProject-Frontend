@@ -1,13 +1,17 @@
 <div class="application">
   <app-header></app-header>
-  <mat-drawer-container class='sidenav' #side_drawer>
+  <mat-drawer-container class='sidenav' #side_drawer *ngIf="user.userName !==''">
     <mat-drawer mode="side" opened>
       <app-sidebar></app-sidebar>
     </mat-drawer>
-    <mat-drawer-content>
+    <mat-drawer-content class='drawer-content'>
       <div class='body'>
         <router-outlet></router-outlet>
       </div>
     </mat-drawer-content>
   </mat-drawer-container>
+  <div class='please-login-first' *ngIf="user.userName===''">
+    <span>Please login!!!</span>
+    <app-login></app-login>
+  </div>
 </div>

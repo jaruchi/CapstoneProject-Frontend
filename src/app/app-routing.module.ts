@@ -6,6 +6,7 @@ import { TutorRequirementComponent } from './component/jobtype/tutor-requirement
 import { LoginComponent } from './component/login/login.component';
 import { OpenApplicationsComponent } from './component/open-applications/open-applications.component';
 import { OpenRequirementsComponent } from './component/open-requirements/open-requirements.component';
+import { RegisterComponent } from './component/register/register.component';
 import { RequirementTileComponent } from './component/requirement-tile/requirement-tile.component';
 
 const routes: Routes = [
@@ -13,10 +14,13 @@ const routes: Routes = [
     path: '',
     component: JobselectorComponent,
   },
-
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {
     path: 'tutor-req',
