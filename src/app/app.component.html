@@ -1,11 +1,13 @@
 <div class="application">
   <app-header></app-header>
-  <mat-drawer-container class='sidenav'>
+  <mat-drawer-container class='sidenav' #side_drawer>
     <mat-drawer mode="side" opened>
       <app-sidebar></app-sidebar>
     </mat-drawer>
     <mat-drawer-content>
-      <div class='body'>router outlet</div>
+      <div class='body'>
+        <router-outlet></router-outlet>
+      </div>
     </mat-drawer-content>
   </mat-drawer-container>
 </div>
