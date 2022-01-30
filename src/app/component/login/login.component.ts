@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginSvc: LoginService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginSvc.init().subscribe((u) => (this.user = u));
+  }
 
   login(email: string, password: string) {
     this.loginSvc.login(email, password);

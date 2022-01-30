@@ -1,5 +1,5 @@
 <main>
-  <section> 
+  <section *ngIf="user.userName ===''">
     <mat-form-field>
       <input matInput maxlength="100" placeholder="Email" required [(ngModel)]="email">
     </mat-form-field>
@@ -8,4 +8,8 @@
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="login(email,password)">Submit</button>
   </section>
+  <div *ngIf="user.userName !==''">
+    <h3>Hi {{user.userName}}!</h3>
+    <div class='mat-body-1'>you are logged in. </div>    
+  </div>
 </main>
