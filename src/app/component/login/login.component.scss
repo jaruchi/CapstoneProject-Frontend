@@ -1,0 +1,17 @@
+main {
+    display: flex;
+    justify-content: center;
+  }
+  
+  main section  {  
+    max-width: 300px;
+  }
+  
+  
+  main section form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  
