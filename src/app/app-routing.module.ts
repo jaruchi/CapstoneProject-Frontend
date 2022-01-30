@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './component/header/header.component';
-import { JobItemComponent } from './component/job-item/job-item.component';
 import { JobselectorComponent } from './component/jobselector/jobselector.component';
+import { TutorApplicationComponent } from './component/jobtype/tutor-application/tutor.component';
+import { TutorRequirementComponent } from './component/jobtype/tutor-requirement/tutor.component';
 import { LoginComponent } from './component/login/login.component';
 import { RequirementTileComponent } from './component/requirement-tile/requirement-tile.component';
 
@@ -18,8 +17,12 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'tutor',
-    component: JobItemComponent,
+    path: 'tutor-req',
+    component: TutorRequirementComponent,
+  },
+  {
+    path: 'tutor-app',
+    component: TutorApplicationComponent
   },
   {
     path: 'open-reqs',

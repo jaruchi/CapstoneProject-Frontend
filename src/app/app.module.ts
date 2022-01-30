@@ -12,13 +12,15 @@ import { RequirementTileComponent } from './component/requirement-tile/requireme
 import { ApplicationTileComponent } from './component/application-tile/application-tile.component';
 import { RequirementCardComponent } from './component/requirement-card/requirement-card.component';
 import { ApplicationCardComponent } from './component/application-card/application-card.component';
-import { JobItemComponent } from './component/job-item/job-item.component';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './component/login/login.component';
-import { TutorComponent } from './component/jobtype/requirement/tutor/tutor.component';
+import { TutorRequirementComponent } from './component/jobtype/tutor-requirement/tutor.component';
+
+import { TutorApplicationComponent } from './component/jobtype/tutor-application/tutor.component';
 
 @NgModule({
-  declarations: [AppComponent,
+  declarations: [
+    AppComponent,
     HeaderComponent,
     SidebarComponent,
     JobselectorComponent,
@@ -26,15 +28,16 @@ import { TutorComponent } from './component/jobtype/requirement/tutor/tutor.comp
     ApplicationTileComponent,
     RequirementCardComponent,
     ApplicationCardComponent,
-    JobItemComponent,
     LoginComponent,
-    TutorComponent],
+    TutorApplicationComponent,
+    TutorRequirementComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
