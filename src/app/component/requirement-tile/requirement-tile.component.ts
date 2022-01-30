@@ -5,15 +5,11 @@ import { Requirement } from 'src/app/model/requirement';
 @Component({
   selector: 'app-requirement-tile',
   templateUrl: './requirement-tile.component.html',
-  styleUrls: ['./requirement-tile.component.scss']
+  styleUrls: ['./requirement-tile.component.scss'],
 })
 export class RequirementTileComponent implements OnInit {
-
-  openReqs: Requirement[] = [...openReqs];
-
+  
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

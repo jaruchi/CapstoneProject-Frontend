@@ -4,6 +4,8 @@ import { JobselectorComponent } from './component/jobselector/jobselector.compon
 import { TutorApplicationComponent } from './component/jobtype/tutor-application/tutor.component';
 import { TutorRequirementComponent } from './component/jobtype/tutor-requirement/tutor.component';
 import { LoginComponent } from './component/login/login.component';
+import { OpenApplicationsComponent } from './component/open-applications/open-applications.component';
+import { OpenRequirementsComponent } from './component/open-requirements/open-requirements.component';
 import { RequirementTileComponent } from './component/requirement-tile/requirement-tile.component';
 
 const routes: Routes = [
@@ -11,7 +13,7 @@ const routes: Routes = [
     path: '',
     component: JobselectorComponent,
   },
-  
+
   {
     path: 'login',
     component: LoginComponent,
@@ -22,11 +24,16 @@ const routes: Routes = [
   },
   {
     path: 'tutor-app',
-    component: TutorApplicationComponent
+    component: TutorApplicationComponent,
   },
   {
     path: 'open-reqs',
-    component: RequirementTileComponent,
+    component: OpenRequirementsComponent,
+  },
+
+  {
+    path: 'open-apps',
+    component: OpenApplicationsComponent,
   },
 ];
 

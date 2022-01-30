@@ -49,3 +49,17 @@ export const openReqs = [
     modifiedDate: null,
   },
 ];
+export const openApplications = [
+  {
+    id: 4,
+    heading: 'tutor',
+  },
+  {
+    id: 5,
+    heading: 'house keeping',
+  },
+  {
+    id: 6,
+    heading: 'baby sit',
+  },
+];

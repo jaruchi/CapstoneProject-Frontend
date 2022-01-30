@@ -15,8 +15,9 @@ import { ApplicationCardComponent } from './component/application-card/applicati
 import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './component/login/login.component';
 import { TutorRequirementComponent } from './component/jobtype/tutor-requirement/tutor.component';
-
 import { TutorApplicationComponent } from './component/jobtype/tutor-application/tutor.component';
+import { OpenApplicationsComponent } from './component/open-applications/open-applications.component';
+import { OpenRequirementsComponent } from './component/open-requirements/open-requirements.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,8 @@ import { TutorApplicationComponent } from './component/jobtype/tutor-application
     LoginComponent,
     TutorApplicationComponent,
     TutorRequirementComponent,
+    OpenApplicationsComponent,
+    OpenRequirementsComponent,
   ],
   imports: [
     BrowserModule,
