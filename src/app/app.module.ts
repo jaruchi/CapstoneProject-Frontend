@@ -12,6 +12,9 @@ import { RequirementTileComponent } from './component/requirement-tile/requireme
 import { ApplicationTileComponent } from './component/application-tile/application-tile.component';
 import { RequirementCardComponent } from './component/requirement-card/requirement-card.component';
 import { ApplicationCardComponent } from './component/application-card/application-card.component';
+import { JobItemComponent } from './component/job-item/job-item.component';
+import {MatSelectModule} from '@angular/material/select';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [AppComponent,
@@ -21,12 +24,15 @@ import { ApplicationCardComponent } from './component/application-card/applicati
     RequirementTileComponent,
     ApplicationTileComponent,
     RequirementCardComponent,
-    ApplicationCardComponent],
+    ApplicationCardComponent,
+    JobItemComponent,
+    LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],
