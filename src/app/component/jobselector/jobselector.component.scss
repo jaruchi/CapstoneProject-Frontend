@@ -1,8 +1,16 @@
-.example-card {
-  
-    margin-bottom: 8px;
+.jobtype-card {
+  margin-bottom: 0.5rem;
+  width: 16rem;
+  height: 16rem;
+  mat-card-content {
+    height: 50%;
   }
-  .example-header-image {
-    background-image: url('https://st3.depositphotos.com/1177973/18429/i/1600/depositphotos_184292800-stock-photo-paper-with-word-tuition.jpg');
-    background-size: cover;
-  }
+}
+.job-types {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
