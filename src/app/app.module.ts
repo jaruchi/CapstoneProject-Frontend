@@ -15,6 +15,7 @@ import { ApplicationCardComponent } from './component/application-card/applicati
 import { JobItemComponent } from './component/job-item/job-item.component';
 import {MatSelectModule} from '@angular/material/select';
 import { LoginComponent } from './component/login/login.component';
+import { TutorComponent } from './component/jobtype/requirement/tutor/tutor.component';
 
 @NgModule({
   declarations: [AppComponent,
@@ -26,7 +27,8 @@ import { LoginComponent } from './component/login/login.component';
     RequirementCardComponent,
     ApplicationCardComponent,
     JobItemComponent,
-    LoginComponent],
+    LoginComponent,
+    TutorComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
