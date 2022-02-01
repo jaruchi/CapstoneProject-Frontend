@@ -28,7 +28,7 @@ const module_list = [
   MatIconModule,
   MatInputModule,
   MatButtonToggleModule,
-  MatNativeDateModule,
+  MatNativeDateModule
 ];
 
 @NgModule({

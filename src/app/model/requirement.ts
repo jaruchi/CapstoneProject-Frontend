@@ -1,3 +1,5 @@
+import { JobType } from "./job-type";
+
 export interface Requirement {
     id: number;
     title: string;
@@ -5,4 +7,5 @@ export interface Requirement {
     createDate?: any;
     expiredDate?: any;
     modifiedDate?: any;
+    jobType?: JobType;
 }
