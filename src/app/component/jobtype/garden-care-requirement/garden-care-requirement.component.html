@@ -1,0 +1,65 @@
+<form class="form-container" [formGroup]="requirement">
+    <mat-card>
+
+        <mat-card-header>
+            <mat-card-title>Looking for Garden Care</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="full-width">
+                    <mat-form-field class="full-width">
+                        <mat-label>Describe</mat-label>
+                        <textarea matInput formControlName="title" placeholder="Describe" required></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="full-width">
+                            <mat-label>Day</mat-label>
+                            <input formControlName="day" matInput [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Service</mat-label>
+                        <mat-select formControlName="service">
+                            <mat-option value="clean">Cleaning</mat-option>
+                            <mat-option value="flower">Flowering</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="error" *ngIf="curReqId!=0" (click)="delete()">Delete</button>
+            <button mat-raised-button color="secondry" *ngIf="curReqId!=0" (click)="update()">Update</button>
+            <button mat-raised-button color="primary" *ngIf="curReqId===0" (click)="create()">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
+<div *ngIf="curReqId!=0">
+    <mat-selection-list [multiple]="false">
+        <mat-list-option *ngFor="let app of openedApplicationsForCurrJobType" [value]="">
+            <mat-icon mat-list-icon>person</mat-icon>
+            <div matLine>
+                {{app.heading}} ({{app.id}})
+            </div>
+            <div matLine> {{app.user?.userName}} ({{app.user?.id}}) </div>
+            <div align="end" matLine>
+                <button mat-raised-button color="primary" (click)="acceptApplication(app.id)">Accept</button>
+            </div>
+        </mat-list-option>
+    </mat-selection-list>
+
+</div>
