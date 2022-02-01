@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
   searchSubject = new Subject();
   user!: User;
+  
   constructor(
     private loginSvc: LoginService,
     private formBuilder: FormBuilder

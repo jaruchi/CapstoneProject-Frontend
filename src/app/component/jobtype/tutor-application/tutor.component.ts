@@ -59,14 +59,6 @@ export class TutorApplicationComponent implements OnInit {
       this.curAppId = parseInt(params.get('app-id') || '0');
       if (this.curAppId > 0) this.getAndFillAppData();
     });
-
-    // this.apiSvc.getOpenReqs().subscribe((reqs) => {
-    //   debugger
-    //   console.log(reqs);
-    //   this.openedRequirementsForCurrJobType = reqs.filter(
-    //     (req) => req.jobType?.id === this.curJobTypeId || true
-    //   );
-    // });
   }
 
   update() {
@@ -79,6 +71,8 @@ export class TutorApplicationComponent implements OnInit {
     this.apiSvc.updateApplication(app).subscribe((newApp) => {
       console.log('application updated');
       //todo: show a snackbar that req updated
+      alert("Updated!!!");
+
     });
   }
 
@@ -104,6 +98,15 @@ export class TutorApplicationComponent implements OnInit {
           const newRoute = `/app/${newApp.id}/${this.curJobTypeId}`;
           this.router.navigate([newRoute]);
         }
+      });
+  }
+
+  acceptApplication(reqid: number) {
+    this.apiSvc
+      .acceptAnApplicationForRequirement(reqid, this.curAppId)
+      .subscribe((newReq) => {
+        const newRoute = `/fulfilled-reqs`;
+        this.router.navigate([newRoute]);
       });
   }
 }

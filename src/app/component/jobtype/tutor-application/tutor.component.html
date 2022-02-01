@@ -59,3 +59,18 @@
         </mat-card-actions>
     </mat-card>
 </form>
+<div *ngIf="curAppId!=0">
+    <mat-selection-list [multiple]="false">
+        <mat-list-option *ngFor="let req of openedRequirementsForCurrJobType" [value]="">
+            <mat-icon mat-list-icon>person</mat-icon>
+            <div matLine>
+                {{req.title}} ({{req.id}})
+            </div>
+            <div matLine> {{req.user?.userName}} ({{req.user?.id}}) </div>
+            <div align="end" matLine>
+                <button mat-raised-button color="primary" (click)="acceptApplication(req.id)">Accept</button>
+            </div>
+        </mat-list-option>
+    </mat-selection-list>
+
+</div>

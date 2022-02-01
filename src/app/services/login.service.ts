@@ -15,6 +15,9 @@ export class LoginService {
   loginAPI: string = `${HOST}/auth/users/login`;
   loggedinAPI: string = `${HOST}/auth/users/isloggedin`;
 
+  //registerAPI: string = `${HOST}/auth/users/register`;
+
+
   constructor(private http: HttpClient, private router: Router) {}
 
   init(): Observable<User> {
@@ -42,6 +45,15 @@ export class LoginService {
       this.token = lb;
       this.getProfile();
     });
-    //this.router.navigate(['/']);
+    this.router.navigate(['/']);
   }
+
+  // async register(name: string, email: string, password: string): Promise<void> {
+  //   const registerBody = { name: name, email: email, password: password };
+  //   this.http.post(this.registerAPI, registerBody).subscribe((r) => {
+  //     //this.token = lb;
+  //     this.getProfile();
+  //   });
+  //   this.router.navigate(['login']);
+  // }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit,Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Application } from 'src/app/model/application';
@@ -59,6 +59,7 @@ export class TutorRequirementComponent implements OnInit {
       .subscribe((apps) => {
         this.openedApplicationsForCurrJobType = apps;
       });
+    
   }
 
   update() {
@@ -71,6 +72,7 @@ export class TutorRequirementComponent implements OnInit {
     this.apiSvc.updateRequirement(req).subscribe((newReq) => {
       console.log('requirement updated');
       //todo: show a snackbar that req updated
+      alert("Updated!!!");
     });
   }
 

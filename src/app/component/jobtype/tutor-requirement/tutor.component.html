@@ -54,7 +54,7 @@
         </mat-card-content>
         <mat-card-actions align="end">
             <button mat-raised-button color="error" *ngIf="curReqId!=0" (click)="delete()">Delete</button>
-            <button mat-raised-button color="secondry" *ngIf="curReqId!=0" (click)="update()">Update</button>
+            <button mat-raised-button color="secondry" *ngIf="curReqId!=0" (click)="update()" >Update</button>
             <button mat-raised-button color="primary" *ngIf="curReqId===0" (click)="create()">Submit</button>
         </mat-card-actions>
     </mat-card>

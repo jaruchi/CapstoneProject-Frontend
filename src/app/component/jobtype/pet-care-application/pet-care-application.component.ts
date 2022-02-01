@@ -27,13 +27,12 @@ export class PetCareApplicationComponent implements OnInit {
   application = this.fb.group({
     heading: [''],
     day: [''],
-    subject: [''],
-    grade: [''],
+    pets: [''],
     id: [0],
   });
 
   applicationToFormData(app: Application) {
-    let appDesc = { day: '', subject: null, grade: null };
+    let appDesc = { day: '', pets: null };
     try {
       appDesc = JSON.parse(app.appDescription || '{}');
     } catch (e) {}
@@ -41,8 +40,7 @@ export class PetCareApplicationComponent implements OnInit {
     this.application = this.fb.group({
       heading: [app.heading],
       day: [appDesc?.day],
-      subject: [appDesc?.subject],
-      grade: [appDesc?.grade],
+      pets: [appDesc?.pets],
       id: [app.id],
     });
   }
@@ -71,6 +69,7 @@ export class PetCareApplicationComponent implements OnInit {
     this.apiSvc.updateApplication(app).subscribe((newApp) => {
       console.log('application updated');
       //todo: show a snackbar that req updated
+      alert("Updated!!!");
     });
   }
 
@@ -96,6 +95,15 @@ export class PetCareApplicationComponent implements OnInit {
           const newRoute = `/app/${newApp.id}/${this.curJobTypeId}`;
           this.router.navigate([newRoute]);
         }
+      });
+  }
+
+  acceptApplication(reqid: number) {
+    this.apiSvc
+      .acceptAnApplicationForRequirement(reqid, this.curAppId)
+      .subscribe((newReq) => {
+        const newRoute = `/fulfilled-reqs`;
+        this.router.navigate([newRoute]);
       });
   }
 }

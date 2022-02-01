@@ -28,7 +28,7 @@ export class PetCareRequirementComponent implements OnInit {
   }
 
   requirementToFormData(req: Requirement) {
-    let reqDesc = { day: '', subject: null, grade: null };
+    let reqDesc = { day: '', pets: null};
     try {
       reqDesc = JSON.parse(req.reqDescription || '{}');
     } catch (e) {}
@@ -36,8 +36,7 @@ export class PetCareRequirementComponent implements OnInit {
     this.requirement = this.fb.group({
       title: [req.title],
       day: [reqDesc?.day],
-      subject: [reqDesc?.subject],
-      grade: [reqDesc?.grade],
+      pets: [reqDesc?.pets],
       id: [req.id],
     });
   }
@@ -71,6 +70,8 @@ export class PetCareRequirementComponent implements OnInit {
     this.apiSvc.updateRequirement(req).subscribe((newReq) => {
       console.log('requirement updated');
       //todo: show a snackbar that req updated
+      alert("Updated!!!");
+
     });
   }
 
