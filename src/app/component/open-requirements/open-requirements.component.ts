@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { openReqs } from 'src/app/model/mock';
 import { Requirement } from 'src/app/model/requirement';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-open-requirements',
@@ -9,8 +10,12 @@ import { Requirement } from 'src/app/model/requirement';
   styleUrls: ['./open-requirements.component.scss'],
 })
 export class OpenRequirementsComponent implements OnInit {
-  requirements: Requirement[] = [...openReqs];
-  constructor() {}
+  requirements: Requirement[] = [];
 
-  ngOnInit(): void {}
+  constructor(private apiSvc: ApiService) {}
+
+  ngOnInit(): void {
+    
+    this.apiSvc.getOpenReqs().subscribe(openReqs => this.requirements = openReqs);
+  }
 }
