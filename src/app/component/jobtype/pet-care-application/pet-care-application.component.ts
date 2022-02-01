@@ -6,11 +6,11 @@ import { Requirement } from 'src/app/model/requirement';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-tutor',
-  templateUrl: './tutor.component.html',
-  styleUrls: ['./tutor.component.scss'],
+  selector: 'app-pet-care-application',
+  templateUrl: './pet-care-application.component.html',
+  styleUrls: ['./pet-care-application.component.scss'],
 })
-export class TutorApplicationComponent implements OnInit {
+export class PetCareApplicationComponent implements OnInit {
   curAppId!: number;
   curJobTypeId!: number;
   openedRequirementsForCurrJobType!: Requirement[];
@@ -21,10 +21,9 @@ export class TutorApplicationComponent implements OnInit {
     private router: Router,
     private activeRoute: ActivatedRoute
   ) {
-    this.curJobTypeId = 1;
+    this.curJobTypeId = 2;
     this.curAppId = 0;
   }
-
   application = this.fb.group({
     heading: [''],
     day: [''],
@@ -60,13 +59,6 @@ export class TutorApplicationComponent implements OnInit {
       if (this.curAppId > 0) this.getAndFillAppData();
     });
 
-    // this.apiSvc.getOpenReqs().subscribe((reqs) => {
-    //   debugger
-    //   console.log(reqs);
-    //   this.openedRequirementsForCurrJobType = reqs.filter(
-    //     (req) => req.jobType?.id === this.curJobTypeId || true
-    //   );
-    // });
   }
 
   update() {

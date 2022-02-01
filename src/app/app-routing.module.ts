@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FulfilledApplicationsComponent } from './component/fulfilled-applications/fulfilled-applications.component';
 import { FulfilledRequirementsComponent } from './component/fulfilled-requirements/fulfilled-requirements.component';
 import { JobselectorComponent } from './component/jobselector/jobselector.component';
+import { PetCareApplicationComponent } from './component/jobtype/pet-care-application/pet-care-application.component';
+import { PetCareRequirementComponent } from './component/jobtype/pet-care-requirement/pet-care-requirement.component';
 import { TutorApplicationComponent } from './component/jobtype/tutor-application/tutor.component';
 import { TutorRequirementComponent } from './component/jobtype/tutor-requirement/tutor.component';
 import { LoginComponent } from './component/login/login.component';
@@ -32,12 +35,12 @@ const routes: Routes = [
   },
 
   {
-    path: 'req/:req-id/2', //'req/:req-id/1',
-    component: TutorRequirementComponent,
+    path: 'req/:req-id/2', //'req/:req-id/2',
+    component: PetCareRequirementComponent,
   },
   {
     path: 'app/:app-id/2',
-    component: TutorApplicationComponent,
+    component: PetCareApplicationComponent,
   },
 
   {
@@ -56,6 +59,10 @@ const routes: Routes = [
   {
     path: 'fulfilled-reqs',
     component: FulfilledRequirementsComponent,
+  },
+  {
+    path: 'fulfilled-apps',
+    component: FulfilledApplicationsComponent,
   },
 
   {

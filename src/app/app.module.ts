@@ -18,6 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './component/register/register.component';
 import { FulfilledRequirementsComponent } from './component/fulfilled-requirements/fulfilled-requirements.component';
+import { FulfilledApplicationsComponent } from './component/fulfilled-applications/fulfilled-applications.component';
+import { PetCareApplicationComponent } from './component/jobtype/pet-care-application/pet-care-application.component';
+import { PetCareRequirementComponent } from './component/jobtype/pet-care-requirement/pet-care-requirement.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { FulfilledRequirementsComponent } from './component/fulfilled-requiremen
     OpenRequirementsComponent,
     RegisterComponent,
     FulfilledRequirementsComponent,
+    FulfilledApplicationsComponent,
+    PetCareApplicationComponent,
+    PetCareRequirementComponent,
   ],
   imports: [
     BrowserModule,

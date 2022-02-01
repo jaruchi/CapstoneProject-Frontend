@@ -6,11 +6,11 @@ import { Requirement } from 'src/app/model/requirement';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-tutor',
-  templateUrl: './tutor.component.html',
-  styleUrls: ['./tutor.component.scss'],
+  selector: 'app-pet-care-requirement',
+  templateUrl: './pet-care-requirement.component.html',
+  styleUrls: ['./pet-care-requirement.component.scss'],
 })
-export class TutorRequirementComponent implements OnInit {
+export class PetCareRequirementComponent implements OnInit {
   curReqId!: number;
   curJobTypeId!: number;
   openedApplicationsForCurrJobType!: Application[];
@@ -22,7 +22,7 @@ export class TutorRequirementComponent implements OnInit {
     private router: Router,
     private activeRoute: ActivatedRoute
   ) {
-    this.curJobTypeId = 1;
+    this.curJobTypeId = 2;
     this.curReqId = 0;
     this.requirementToFormData({ id: 0, title: '' });
   }

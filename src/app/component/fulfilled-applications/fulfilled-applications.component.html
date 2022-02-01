@@ -1,0 +1,15 @@
+<mat-selection-list [multiple]="false" value="null">
+    <mat-list-option *ngFor="let app of applications" class='app-match'>
+        <mat-icon mat-list-icon>person</mat-icon>
+
+        <div matLine>
+            Thank you for helping {{app.requirement.user?.userName}} with {{app.application.jobType?.type}}
+        </div>
+        <div matLine>
+            He asked for [ Title: {{app.requirement.title}} ]
+        </div>
+        <div matLine>
+            and accepted your help [Heading: {{app.application.heading}}].
+        </div>
+    </mat-list-option>
+</mat-selection-list>

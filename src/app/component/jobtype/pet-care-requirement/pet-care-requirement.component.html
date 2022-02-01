@@ -1,15 +1,15 @@
-
-<form class="form-container" [formGroup]="application">
+<form class="form-container" [formGroup]="requirement">
     <mat-card>
+
         <mat-card-header>
-            <mat-card-title>Appying for a Tutor</mat-card-title>
+            <mat-card-title>Looking for Pet Care</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <div class="row">
                 <div class="full-width">
                     <mat-form-field class="full-width">
                         <mat-label>Describe</mat-label>
-                        <textarea matInput formControlName="heading" placeholder="Describe" required></textarea>
+                        <textarea matInput formControlName="title" placeholder="Describe" required></textarea>
                     </mat-form-field>
                 </div>
             </div>
@@ -31,31 +31,35 @@
             <div class="row">
                 <div class="col-md-6">
                     <mat-form-field>
-                        <mat-label>Subjects</mat-label>
+                        <mat-label>Pet</mat-label>
                         <mat-select formControlName="subject">
-                            <mat-option value="math">Maths</mat-option>
-                            <mat-option value="science">Science</mat-option>
-                            <mat-option value="science">English</mat-option>
+                            <mat-option value="math">Dog</mat-option>
+                            <mat-option value="science">Cat</mat-option>
                         </mat-select>
                     </mat-form-field>
 
                 </div>
-                <div class="col-md-6">
-                    <mat-form-field>
-                        <mat-label>Level</mat-label>
-                        <mat-select formControlName="grade">
-                            <mat-option value="one">Elementary</mat-option>
-                            <mat-option value="two">Middle</mat-option>
-                            <mat-option value="two">High</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
             </div>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-raised-button color="error" *ngIf="curAppId!=0" (click)="delete()">Delete</button>
-            <button mat-raised-button color="secondry" *ngIf="curAppId!=0" (click)="update()">Update</button>
-            <button mat-raised-button color="primary" *ngIf="curAppId===0" (click)="create()">Submit</button>
+            <button mat-raised-button color="error" *ngIf="curReqId!=0" (click)="delete()">Delete</button>
+            <button mat-raised-button color="secondry" *ngIf="curReqId!=0" (click)="update()">Update</button>
+            <button mat-raised-button color="primary" *ngIf="curReqId===0" (click)="create()">Submit</button>
         </mat-card-actions>
     </mat-card>
 </form>
+<div *ngIf="curReqId!=0">
+    <mat-selection-list [multiple]="false">
+        <mat-list-option *ngFor="let app of openedApplicationsForCurrJobType" [value]="">
+            <mat-icon mat-list-icon>person</mat-icon>
+            <div matLine>
+                {{app.heading}} ({{app.id}})
+            </div>
+            <div matLine> {{app.user?.userName}} ({{app.user?.id}}) </div>
+            <div align="end" matLine>
+                <button mat-raised-button color="primary" (click)="acceptApplication(app.id)">Accept</button>
+            </div>
+        </mat-list-option>
+    </mat-selection-list>
+
+</div>

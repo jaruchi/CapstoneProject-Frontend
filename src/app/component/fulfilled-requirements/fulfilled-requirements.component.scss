@@ -1,7 +1,13 @@
 mat-card {
-    min-height: 5rem;
-    margin: 1rem;
-  }
-  .req-tile {
-    padding: 1rem;
-  }
+  min-height: 5rem;
+  margin: 1rem;
+}
+.req-tile {
+  padding: 1rem;
+}
+
+.req-match {
+  border: 1px solid red;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+}

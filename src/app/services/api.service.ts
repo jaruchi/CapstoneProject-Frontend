@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { JobType } from '../model/job-type';
-import { Requirement } from '../model/requirement';
+import { ReqAppCombination, Requirement } from '../model/requirement';
 import { Application } from '../model/application';
 import { LoginService } from './login.service';
 
@@ -12,14 +12,21 @@ const jobTypeAPI = HOST + 'api/jobtypes';
 const reqAPI = HOST + 'api/requirements/'; // add req id
 const createReqAPI = HOST + 'api/requirements/jobtype/'; // add job typ id
 
-const fulfilledReqAPI = HOST + 'api/requirements/fulfilled';
 const openReqAPI = HOST + 'api/requirements/opened';
 
 const appAPI = HOST + 'api/applications/'; // add app id
 const createAppAPI = HOST + 'api/applications/jobtype/'; // add job type id
 
-const fulfilledAppAPI = HOST + 'api/applications/fulfilled';
 const openAppAPI = HOST + 'api/applications/opened';
+
+const otherAppAPI = HOST + 'api/applications/jobtype/'; // add job typ id
+
+const myFulfilledReqs = HOST + 'api/match/requirements';
+
+const myFulfilledApps = HOST + 'api/match/applications';
+
+const acceptAnAppAPI = (reqid: number, appid: number): string =>
+  HOST + `api/match/requirement/${reqid}/application/${appid}`;
 
 @Injectable({
   providedIn: 'root',
@@ -159,13 +166,50 @@ export class ApiService {
     return this.http.get<Application>(API, options);
   }
 
-  getFulFilledReqs(): Observable<Requirement[]> {
+  getOthersOpenApplicationsByJobType(
+    jobtypeid: number
+  ): Observable<Application[]> {
     const token = this.loginSvc.token;
     const options = {
       headers: {
         Authorization: 'Bearer ' + token?.jwt,
       },
     };
-    return this.http.get<Requirement[]>(fulfilledReqAPI, options);
+    return this.http.get<Application[]>(otherAppAPI + jobtypeid, options);
+  }
+
+  getMyMatchedRequirement(): Observable<ReqAppCombination[]> {
+    const token = this.loginSvc.token;
+    const options = {
+      headers: {
+        Authorization: 'Bearer ' + token?.jwt,
+      },
+    };
+    return this.http.get<ReqAppCombination[]>(myFulfilledReqs, options);
+  }
+
+  getMyMatchedApplications(): Observable<ReqAppCombination[]> {
+    const token = this.loginSvc.token;
+    const options = {
+      headers: {
+        Authorization: 'Bearer ' + token?.jwt,
+      },
+    };
+    return this.http.get<ReqAppCombination[]>(myFulfilledApps, options);
+  }
+
+  acceptAnApplicationForRequirement(
+    appId: number,
+    reqId: number
+  ): Observable<ReqAppCombination> {
+    const token = this.loginSvc.token;
+    const options = {
+      headers: {
+        Authorization: 'Bearer ' + token?.jwt,
+      },
+    };
+
+    const API = acceptAnAppAPI(reqId, appId);
+    return this.http.post<ReqAppCombination>(API, {}, options);
   }
 }

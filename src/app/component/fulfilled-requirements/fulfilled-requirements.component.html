@@ -1,11 +1,15 @@
 <mat-selection-list [multiple]="false" value="null">
-    <mat-list-option *ngFor="let req of requirements">
-      <mat-icon mat-list-icon>person</mat-icon>
-      <div mat-line>
-        <a routerLink="/req/{{req.id}}/1">
-          {{req.title}}
-        </a>
-      </div>
-      <div mat-line> {{req.id}} </div>
-    </mat-list-option>
-  </mat-selection-list>
+  <mat-list-option *ngFor="let req of requirements" class='req-match'>
+    <mat-icon mat-list-icon>person</mat-icon>
+
+    <div matLine>
+      {{req.application.user?.userName}} is helping you with {{req.application.jobType?.type}}
+    </div>
+    <div matLine>
+      for your *{{req.requirement.title}}* need
+    </div>
+    <div matLine>
+      with *{{req.application.heading}}*.
+    </div>
+  </mat-list-option>
+</mat-selection-list>

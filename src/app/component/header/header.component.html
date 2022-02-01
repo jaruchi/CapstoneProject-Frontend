@@ -5,7 +5,7 @@
   <span><a routerLink="/">CUMI</a></span>
   <span class="example-spacer"></span>
   <button mat-icon-button>
-    <span *ngIf="smartUser$|async as smartUser">{{smartUser.userName}}</span>
+    <span *ngIf="smartUser$|async as smartUser">{{smartUser.userName}} ({{smartUser.id}})</span>
     <a routerLink="/login">
       <mat-icon>person</mat-icon>
     </a>

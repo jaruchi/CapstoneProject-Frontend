@@ -1,5 +1,6 @@
 <form class="form-container" [formGroup]="requirement">
     <mat-card>
+
         <mat-card-header>
             <mat-card-title>Looking for a Tutor</mat-card-title>
         </mat-card-header>
@@ -59,19 +60,16 @@
     </mat-card>
 </form>
 <div *ngIf="curReqId!=0">
-    <mat-selection-list  [multiple]="false">
+    <mat-selection-list [multiple]="false">
         <mat-list-option *ngFor="let app of openedApplicationsForCurrJobType" [value]="">
             <mat-icon mat-list-icon>person</mat-icon>
-            <div mat-line>
-                <a routerLink="/app/{{app.id}}/1">
-                    {{app.heading}}
-                </a>
+            <div matLine>
+                {{app.heading}} ({{app.id}})
             </div>
-            <div mat-line> {{app.id}} </div>
-            <div align="end" mat-line>
-                <button mat-raised-button color="primary" (click)="create()">Accept</button>
+            <div matLine> {{app.user?.userName}} ({{app.user?.id}}) </div>
+            <div align="end" matLine>
+                <button mat-raised-button color="primary" (click)="acceptApplication(app.id)">Accept</button>
             </div>
-
         </mat-list-option>
     </mat-selection-list>
 
