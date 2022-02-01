@@ -1,5 +1,5 @@
 <div class="job-types">
-    <div *ngFor="let job of jobtypes" >
+    <div *ngFor="let job of jobtypes">
         <mat-card class="jobtype-card">
             <mat-card-header>
                 <div mat-card-avatar>
@@ -12,10 +12,10 @@
                     {{job.description}}
                 </p>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-button><a routerLink="/tutor-req">find a job</a></button>
-                <button mat-button><a routerLink="/tutor-app">Looking for {{job.type}}</a></button>
+            <mat-card-actions class='footer'>
+                <button mat-raised-button routerLink="/app/0/{{job.id}}">I can help</button>
+                <button mat-raised-button raised routerLink="/req/0/{{job.id}}">Need help </button>
             </mat-card-actions>
         </mat-card>
     </div>
-</div> 
+</div>
