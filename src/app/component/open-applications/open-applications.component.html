@@ -1,13 +1,12 @@
 <mat-selection-list #shoes [multiple]="false">
-    <mat-list-option *ngFor="let application of applications">
-        <mat-card>
-            <mat-card-header>
-                <div mat-card-avatar>
-                    <mat-icon>person</mat-icon>
-                </div>
-                <mat-card-title>{{application.heading}}</mat-card-title>
-                <mat-card-subtitle>{{application.id}}</mat-card-subtitle>
-            </mat-card-header>
-        </mat-card>
+    <mat-list-option *ngFor="let application of applications" class="application">
+        <div matLine >
+            <span>
+                <mat-icon>person</mat-icon>
+            </span>
+            <span>{{application.jobType?.type}}</span>
+        </div>
+        <a matLine  routerLink='/app/{{application.id}}/{{application.jobType?.id}}'>{{application.heading}}
+            ({{application.id}})</a>
     </mat-list-option>
 </mat-selection-list>
