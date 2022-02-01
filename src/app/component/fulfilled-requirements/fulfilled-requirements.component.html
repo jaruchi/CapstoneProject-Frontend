@@ -1,0 +1,11 @@
+<mat-selection-list [multiple]="false" value="null">
+    <mat-list-option *ngFor="let req of requirements">
+      <mat-icon mat-list-icon>person</mat-icon>
+      <div mat-line>
+        <a routerLink="/req/{{req.id}}/1">
+          {{req.title}}
+        </a>
+      </div>
+      <div mat-line> {{req.id}} </div>
+    </mat-list-option>
+  </mat-selection-list>
