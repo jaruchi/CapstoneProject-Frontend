@@ -1,26 +1,78 @@
-<div>
-    <h3>Looking for a Tutor</h3>
-    <div class='req-form'>
-        <app-requirement-card></app-requirement-card>
-        
-        <mat-form-field>
-            <mat-label>Subjects</mat-label>
-            <mat-select multiple=false>
-                <mat-option value="one">Maths</mat-option>
-                <mat-option value="two">Science</mat-option>
-            </mat-select>
-        </mat-form-field>
+<form class="form-container" [formGroup]="requirement">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Looking for a Tutor</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="full-width">
+                    <mat-form-field class="full-width">
+                        <mat-label>Describe</mat-label>
+                        <textarea matInput formControlName="title" placeholder="Describe" required></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="full-width">
+                            <mat-label>Day</mat-label>
+                            <input formControlName="day" matInput [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
 
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Subjects</mat-label>
+                        <mat-select formControlName="subject">
+                            <mat-option value="math">Maths</mat-option>
+                            <mat-option value="science">Science</mat-option>
+                            <mat-option value="science">English</mat-option>
+                        </mat-select>
+                    </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Hours from:</mat-label>
-            <input matInput type="number">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Hours to</mat-label>
-            <input matInput type="number">
-            <mat-hint>Prefer end hour for tution</mat-hint>
-        </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Level</mat-label>
+                        <mat-select formControlName="grade">
+                            <mat-option value="one">Elementary</mat-option>
+                            <mat-option value="two">Middle</mat-option>
+                            <mat-option value="two">High</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="error" *ngIf="curReqId!=0" (click)="delete()">Delete</button>
+            <button mat-raised-button color="secondry" *ngIf="curReqId!=0" (click)="update()">Update</button>
+            <button mat-raised-button color="primary" *ngIf="curReqId===0" (click)="create()">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
+<div *ngIf="curReqId!=0">
+    <mat-selection-list  [multiple]="false">
+        <mat-list-option *ngFor="let app of openedApplicationsForCurrJobType" [value]="">
+            <mat-icon mat-list-icon>person</mat-icon>
+            <div mat-line>
+                <a routerLink="/app/{{app.id}}/1">
+                    {{app.heading}}
+                </a>
+            </div>
+            <div mat-line> {{app.id}} </div>
+            <div align="end" mat-line>
+                <button mat-raised-button color="primary" (click)="create()">Accept</button>
+            </div>
 
-    </div>
+        </mat-list-option>
+    </mat-selection-list>
+
 </div>

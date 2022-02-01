@@ -9,11 +9,19 @@ import { LoginService } from './services/login.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+
   title = 'CUMI';
   user!: User;
-  constructor(private router: Router, private loginSvc: LoginService) {}
+  hideSidepane: boolean = false;
+
+  constructor(private router: Router, private loginSvc: LoginService) { }
+  
   ngOnInit(): void {
     this.loginSvc.init().subscribe((u) => (this.user = u));
   }
-  toggle(): void {}
+  
+  toggle(a?: string): void {
+    console.log(this.hideSidepane);
+    this.hideSidepane = !this.hideSidepane;
+  }
 }

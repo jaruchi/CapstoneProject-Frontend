@@ -1,7 +1,7 @@
 <div class="application">
-  <app-header></app-header>
+  <app-header (myaction)="toggle()"></app-header>
   <mat-drawer-container class='sidenav' #side_drawer *ngIf="user.userName !==''">
-    <mat-drawer mode="side" opened>
+    <mat-drawer mode="over" [opened]="hideSidepane">
       <app-sidebar></app-sidebar>
     </mat-drawer>
     <mat-drawer-content class='drawer-content'>
