@@ -1,15 +1,38 @@
 <main>
   <section *ngIf="user.userName ===''">
-    <mat-form-field>
-      <input matInput maxlength="100" placeholder="Email" required [(ngModel)]="email">
-    </mat-form-field>
-    <mat-form-field>
-      <input type="password" matInput maxlength="30" placeholder="Password" required [(ngModel)]="password">
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="login(email,password)">Submit</button>
+    <form class="form-container" [formGroup]="loginCred">
+      <mat-card>
+
+        <mat-card-header>
+          <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field>
+                <input matInput maxlength="100" placeholder="Email" required formControlName="email">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field>
+                <input type="password" matInput maxlength="30" placeholder="Password" required
+                  formControlName="password">
+              </mat-form-field>
+            </div>
+          </div>
+
+
+        </mat-card-content>
+        <mat-card-actions  align="end"> 
+          <button mat-raised-button color="primary" (click)="login()">Submit</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
   </section>
   <div *ngIf="user.userName !==''">
     <h3>Hi {{user.userName}}!</h3>
-    <div class='mat-body-1'>you are logged in. </div>    
+    <div class='mat-body-1'>you are logged in. </div>
   </div>
 </main>
