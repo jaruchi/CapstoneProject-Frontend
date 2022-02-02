@@ -2,14 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
-
 # Resources
+
 - https://www.youtube.com/watch?v=jUfEn032IL8
 - https://stackblitz.com/edit/angular-material-based-login-form?file=src%2Fstyles.css
 - https://blog.angular-university.io/angular-http/
 - https://codehandbook.org/how-to-create-angular-material-reactive-form/
 - https://www.baeldung.com/spring-cors
 - https://stackoverflow.com/questions/35531661/using-env-variable-in-spring-boots-application-properties
+- https://medium.com/geekculture/how-to-easily-deploy-your-first-angular-app-on-heroku-65dd546c8181
+  (do not add heroku-postbuild )
 
 ## Development server
 
