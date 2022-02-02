@@ -9,6 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - https://blog.angular-university.io/angular-http/
 - https://codehandbook.org/how-to-create-angular-material-reactive-form/
 - https://www.baeldung.com/spring-cors
+- https://stackoverflow.com/questions/35531661/using-env-variable-in-spring-boots-application-properties
 
 ## Development server
 
