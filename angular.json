@@ -81,7 +81,8 @@
               "browserTarget": "cumi:build:production"
             },
             "development": {
-              "browserTarget": "cumi:build:development"
+              "browserTarget": "cumi:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

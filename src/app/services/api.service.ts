@@ -6,7 +6,7 @@ import { ReqAppCombination, Requirement } from '../model/requirement';
 import { Application } from '../model/application';
 import { LoginService } from './login.service';
 
-const HOST = 'http://localhost:9092/';
+const HOST = '/pipe/';
 const jobTypeAPI = HOST + 'api/jobtypes';
 
 const reqAPI = HOST + 'api/requirements/'; // add req id

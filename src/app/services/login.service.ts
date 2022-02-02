@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, Observable, of } from 'rxjs';
 import { LoginRespose, User } from '../model/user';
 
-const HOST: string = 'http://localhost:9092';
+const HOST: string = '/pipe/';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,11 +12,10 @@ export class LoginService {
   user: User = { id: 0, emailAddress: '', userName: '' };
   token: LoginRespose | undefined;
 
-  loginAPI: string = `${HOST}/auth/users/login`;
-  loggedinAPI: string = `${HOST}/auth/users/isloggedin`;
+  loginAPI: string = HOST + `auth/users/login`;
+  loggedinAPI: string = HOST + `auth/users/isloggedin`;
 
   //registerAPI: string = `${HOST}/auth/users/register`;
-
 
   constructor(private http: HttpClient, private router: Router) {}
 
