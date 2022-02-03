@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobType } from 'src/app/model/job-type';
-import { jobTypes } from 'src/app/model/mock';
+
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
