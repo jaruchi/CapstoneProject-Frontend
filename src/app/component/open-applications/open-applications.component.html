@@ -1,16 +1,24 @@
+<div class='page-header'>
+    <mat-card-header>
+        <mat-card-title>My Applications</mat-card-title>
+    </mat-card-header>
+</div>
 
-<mat-card-header>
-    <mat-card-title>I can help with</mat-card-title>
-  </mat-card-header>
-  <mat-selection-list #shoes [multiple]="false">
-    <mat-list-option *ngFor="let application of applications" class="application">
-        <div matLine >
+<div *ngIf="0===(applications$ | async)?.length">
+    <div class='not-found'>
+        You dont have any pending application to be accepted.
+    </div>
+</div>
+<mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let application of applications$|async" class="application">
+        <div matLine>
             <span>
                 <mat-icon>person</mat-icon>
             </span>
-            <span>{{application.jobType?.type}}</span>
+            <span>Job: {{application.jobType?.type}}</span>
         </div>
-        <a matLine  routerLink='/app/{{application.id}}/{{application.jobType?.id}}'>{{application.heading}}
-            ({{application.id}})</a>
+        <a matLine routerLink='/app/{{application.id}}/{{application.jobType?.id}}'>{{application.heading}}
+        </a>
+        <div>Day:  {{format(application.day)}}</div>
     </mat-list-option>
 </mat-selection-list>

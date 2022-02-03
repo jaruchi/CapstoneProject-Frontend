@@ -12,6 +12,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - https://stackoverflow.com/questions/35531661/using-env-variable-in-spring-boots-application-properties
 - https://medium.com/geekculture/how-to-easily-deploy-your-first-angular-app-on-heroku-65dd546c8181
   (do not add heroku-postbuild )
+- https://www.twilio.com/blog/node-js-proxy-server
+- https://angular.io/guide/build
 
 ## Development server
 

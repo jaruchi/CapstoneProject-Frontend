@@ -1,14 +1,22 @@
+<div class='page-header'>
 
-<mat-card-header>
-  <mat-card-title>My Requirements</mat-card-title>
-</mat-card-header>
+  <mat-card-header>
+    <mat-card-title>My Requirements</mat-card-title>
+  </mat-card-header>
+</div>
+
+<div *ngIf="requirements.length===0" class='not-found'>
+  You do not have any open requirements.
+</div>
+
 <mat-selection-list [multiple]="false" value="null">
   <mat-list-option *ngFor="let req of requirements" class='requirement'>
 
     <mat-icon mat-list-icon>person</mat-icon>
-    <span matLine>{{req.jobType?.type}}</span>
+    <span matLine>Job: {{req.jobType?.type}}</span>
     <a matLine routerLink="/req/{{req.id}}/{{req.jobType?.id}}">
-      {{req.title}} ({{req.id}})
+      {{req.title}} 
     </a>
+    <div>Day: {{format(req.day)}}</div>
   </mat-list-option>
 </mat-selection-list>

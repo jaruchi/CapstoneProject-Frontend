@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { openReqs } from 'src/app/model/mock';
 import { Requirement } from 'src/app/model/requirement';
 import { ApiService } from 'src/app/services/api.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-open-requirements',
@@ -10,12 +11,17 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./open-requirements.component.scss'],
 })
 export class OpenRequirementsComponent implements OnInit {
-  requirements: Requirement[] = [];
+  requirements!: Requirement[];
 
   constructor(private apiSvc: ApiService) {}
 
   ngOnInit(): void {
-    
-    this.apiSvc.getOpenReqs().subscribe(openReqs => this.requirements = openReqs);
+    this.apiSvc
+      .getOpenReqs()
+      .subscribe((openReqs) => (this.requirements = openReqs));
+  }
+
+  format(day?: string): any {
+    return moment(day).format('MMM-DD');
   }
 }
