@@ -1,19 +1,25 @@
+<div class='page-header'>
+  <mat-card-header>
+    <mat-card-title>My Accepted Requirements</mat-card-title>
+  </mat-card-header>
+</div>
 
-<mat-card-header>
-  <mat-card-title>My Accepted Requirements</mat-card-title>
-</mat-card-header>
+<div *ngIf="requirements.length===0" class='not-found'>
+  You do not have any appointments.
+</div>
+
 <mat-selection-list [multiple]="false" value="null">
   <mat-list-option *ngFor="let req of requirements" class='req-match'>
     <mat-icon mat-list-icon>person</mat-icon>
 
     <div matLine>
-      {{req.application.user?.userName}} is helping you with {{req.application.jobType?.type}}
+      {{req.application.user?.userName}} is helping you with {{req.application.jobType?.type}} Job
     </div>
     <div matLine>
-      for your *{{req.requirement.title}}* need
+      Requirement: {{req.requirement.title}}
     </div>
     <div matLine>
-      with *{{req.application.heading}}*.
+      Application: {{req.application.heading}}
     </div>
   </mat-list-option>
 </mat-selection-list>

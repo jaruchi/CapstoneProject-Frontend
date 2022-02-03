@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./fulfilled-applications.component.scss'],
 })
 export class FulfilledApplicationsComponent implements OnInit {
-  applications: ReqAppCombination[] = [];
+  applications!: ReqAppCombination[];
   constructor(private apiSvc: ApiService) {}
 
   ngOnInit(): void {

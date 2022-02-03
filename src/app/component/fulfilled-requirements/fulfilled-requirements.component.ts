@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./fulfilled-requirements.component.scss'],
 })
 export class FulfilledRequirementsComponent implements OnInit {
-  requirements: ReqAppCombination[] = [];
+  requirements!: ReqAppCombination[];
 
   constructor(private apiSvc: ApiService) {}
 
