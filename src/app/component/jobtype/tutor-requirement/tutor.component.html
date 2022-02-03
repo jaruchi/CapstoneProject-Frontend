@@ -54,23 +54,31 @@
         </mat-card-content>
         <mat-card-actions align="end">
             <button mat-raised-button color="error" *ngIf="curReqId!=0" (click)="delete()">Delete</button>
-            <button mat-raised-button color="secondry" *ngIf="curReqId!=0" (click)="update()" >Update</button>
+            <button mat-raised-button color="secondry" *ngIf="curReqId!=0" (click)="update()">Update</button>
             <button mat-raised-button color="primary" *ngIf="curReqId===0" (click)="create()">Submit</button>
         </mat-card-actions>
     </mat-card>
 </form>
 <div *ngIf="curReqId!=0">
     <mat-selection-list [multiple]="false">
+        <div *ngIf="openedApplicationsForCurrJobType.length!=0" class='not-found'>
+            Applications for Tutor
+        </div>
         <mat-list-option *ngFor="let app of openedApplicationsForCurrJobType" [value]="">
-            <mat-icon mat-list-icon>person</mat-icon>
-            <div matLine>
-                {{app.heading}} ({{app.id}})
+            <div class="content">
+                
+                <mat-icon mat-list-icon>person</mat-icon>
+                <div matLine>
+                    {{app.heading}}
+                </div>
+                <div matLine> {{app.user?.userName}} </div>
             </div>
-            <div matLine> {{app.user?.userName}} ({{app.user?.id}}) </div>
             <div align="end" matLine>
                 <button mat-raised-button color="primary" (click)="acceptApplication(app.id)">Accept</button>
             </div>
-        </mat-list-option>
-    </mat-selection-list>
 
+
+        </mat-list-option>
+
+    </mat-selection-list>
 </div>

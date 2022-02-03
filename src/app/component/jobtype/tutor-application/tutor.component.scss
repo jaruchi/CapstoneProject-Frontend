@@ -4,3 +4,14 @@
   margin: 1rem;
   align-items: center;
 }
+
+
+.form-container mat-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.full-width {
+  width: 100%;
+}

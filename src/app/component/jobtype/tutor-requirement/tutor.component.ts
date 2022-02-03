@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit,Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Application } from 'src/app/model/application';
 import { Requirement } from 'src/app/model/requirement';
@@ -20,24 +21,28 @@ export class TutorRequirementComponent implements OnInit {
     private fb: FormBuilder,
     private apiSvc: ApiService,
     private router: Router,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {
     this.curJobTypeId = 1;
     this.curReqId = 0;
-    this.requirementToFormData({ id: 0, title: '' });
+    this.requirementToFormData({
+      id: 0, title: '', day: '', subject: '',
+        level: '', pets: '', ageRange: '', services: ''
+    });
   }
 
   requirementToFormData(req: Requirement) {
-    let reqDesc = { day: '', subject: null, grade: null };
-    try {
-      reqDesc = JSON.parse(req.reqDescription || '{}');
-    } catch (e) {}
+    // let reqDesc = { day: '', subject: null, grade: null };
+    // try {
+    //   reqDesc = JSON.parse(req.reqDescription || '{}');
+    // } catch (e) {}
 
     this.requirement = this.fb.group({
       title: [req.title],
-      day: [reqDesc?.day],
-      subject: [reqDesc?.subject],
-      grade: [reqDesc?.grade],
+      day: [req.day],
+      subject: [req.subject],
+      level: [req.level],
       id: [req.id],
     });
   }
@@ -59,40 +64,57 @@ export class TutorRequirementComponent implements OnInit {
       .subscribe((apps) => {
         this.openedApplicationsForCurrJobType = apps;
       });
-    
   }
 
   update() {
     const fv = this.requirement.value;
+
     const req: Requirement = {
       id: this.curReqId,
       title: fv.title,
-      reqDescription: JSON.stringify(fv),
+      day: fv.day,
+      subject: fv.subject,
+      level: fv.level,
+      pets: '',
+      ageRange: '',
+      services: '',
+
+      //reqDescription: JSON.stringify(fv),
     };
     this.apiSvc.updateRequirement(req).subscribe((newReq) => {
+      this.snackit('Your requirement updated.');
       console.log('requirement updated');
-      //todo: show a snackbar that req updated
-      alert("Updated!!!");
     });
   }
 
   delete() {
     this.apiSvc.deleteRequirement(this.curReqId).subscribe((deletedReq) => {
+      this.snackit('Your requirement deleted.');
       this.router.navigate(['/open-reqs']);
     });
   }
 
   create() {
     const fv = this.requirement.value;
+
     const req: Requirement = {
       id: 0,
       title: fv.title,
-      reqDescription: JSON.stringify(fv),
+      day: fv.day,
+      subject: fv.subject,
+      level: fv.level,
+      pets: '',
+      ageRange: '',
+      services: '',
+
+      //reqDescription: JSON.stringify(fv),
     };
     this.apiSvc
       .createRequirement(this.curJobTypeId, req)
       .subscribe((newReq) => {
         if (newReq.id > 0) {
+          this.snackit('Your requirement created.');
+
           this.curReqId = newReq.id;
           this.requirementToFormData(newReq);
           const newRoute = `/req/${newReq.id}/${this.curJobTypeId}`;
@@ -105,8 +127,15 @@ export class TutorRequirementComponent implements OnInit {
     this.apiSvc
       .acceptAnApplicationForRequirement(appid, this.curReqId)
       .subscribe((newReq) => {
+        this.snackit('Congratulations!!! you found someone to help you.');
         const newRoute = `/fulfilled-reqs`;
         this.router.navigate([newRoute]);
       });
+  }
+
+  snackit(msg: string): void {
+    this.snackBar.open(msg, undefined, {
+      duration: 2000,
+    });
   }
 }

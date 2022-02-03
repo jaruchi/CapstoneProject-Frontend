@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Application } from 'src/app/model/application';
 import { Requirement } from 'src/app/model/requirement';
@@ -19,7 +20,8 @@ export class TutorApplicationComponent implements OnInit {
     private fb: FormBuilder,
     private apiSvc: ApiService,
     private router: Router,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {
     this.curJobTypeId = 1;
     this.curAppId = 0;
@@ -29,21 +31,21 @@ export class TutorApplicationComponent implements OnInit {
     heading: [''],
     day: [''],
     subject: [''],
-    grade: [''],
+    level: [''],
     id: [0],
   });
 
   applicationToFormData(app: Application) {
-    let appDesc = { day: '', subject: null, grade: null };
-    try {
-      appDesc = JSON.parse(app.appDescription || '{}');
-    } catch (e) {}
+    // let appDesc = { day: '', subject: null, grade: null };
+    // try {
+    //   appDesc = JSON.parse(app.appDescription || '{}');
+    // } catch (e) {}
 
     this.application = this.fb.group({
       heading: [app.heading],
-      day: [appDesc?.day],
-      subject: [appDesc?.subject],
-      grade: [appDesc?.grade],
+      day: [app.day],
+      subject: [app.subject],
+      level: [app.level],
       id: [app.id],
     });
   }
@@ -66,18 +68,24 @@ export class TutorApplicationComponent implements OnInit {
     const app: Application = {
       id: this.curAppId,
       heading: fv.heading,
+      day: fv.day,
+      subject: fv.subject,
+      level: fv.level,
+      pets: '',
+      ageRange: '',
+      services: '',
+
       appDescription: JSON.stringify(fv),
     };
     this.apiSvc.updateApplication(app).subscribe((newApp) => {
       console.log('application updated');
-      //todo: show a snackbar that req updated
-      alert("Updated!!!");
-
+      this.snackit('Your application updated.');
     });
   }
 
   delete() {
-    this.apiSvc.deleteRequirement(this.curAppId).subscribe((deletedApp) => {
+    this.apiSvc.deleteApplication(this.curAppId).subscribe((deletedApp) => {
+      this.snackit('Your application deleted.');
       this.router.navigate(['/open-apps']);
     });
   }
@@ -87,12 +95,20 @@ export class TutorApplicationComponent implements OnInit {
     const app: Application = {
       id: 0,
       heading: fv.heading,
-      appDescription: JSON.stringify(fv),
+      day: fv.day,
+      subject: fv.subject,
+      level: fv.level,
+      pets: '',
+      ageRange: '',
+      services: '',
+      //appDescription: JSON.stringify(fv),
     };
     this.apiSvc
       .createApplication(this.curJobTypeId, app)
       .subscribe((newApp) => {
         if (newApp.id > 0) {
+          this.snackit('Your application created.');
+
           this.curAppId = newApp.id;
           this.applicationToFormData(newApp);
           const newRoute = `/app/${newApp.id}/${this.curJobTypeId}`;
@@ -105,8 +121,15 @@ export class TutorApplicationComponent implements OnInit {
     this.apiSvc
       .acceptAnApplicationForRequirement(reqid, this.curAppId)
       .subscribe((newReq) => {
+        this.snackit('Congratulations!!! your application is accepted.');
         const newRoute = `/fulfilled-reqs`;
         this.router.navigate([newRoute]);
       });
+  }
+
+  snackit(msg: string): void {
+    this.snackBar.open(msg, undefined, {
+      duration: 2000,
+    });
   }
 }
