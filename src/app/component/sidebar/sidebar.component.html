@@ -1,35 +1,33 @@
 <mat-list>
-    <section matLine>
-        <h3>Need Help</h3>
-    </section>
-    <mat-list-item>
-        <a routerLink="/open-reqs" matLine>
-            Looking for help
-        </a>
-        <div matLine>All the jobs created by me.</div>
-    </mat-list-item>
-    <mat-list-item>
-        <a routerLink="/fulfilled-reqs" matLine>
-            Help found
-        </a>
-        <div matLine>All the accepted (help) applications for my requirement.</div>
+    <mat-list-item routerLink="/login" [routerLinkActive]="['is-active']" color="primary">
+        <mat-icon matListIcon>
+            account_circle
+        </mat-icon>
+        <h1 matLine>{{user.firstName||user.userName}} {{user.lastName||''}}</h1>
+        <div matLine>{{user.emailAddress}}</div>
+        <div matLine></div>
     </mat-list-item>
     <div class='divider' matLine></div>
-    <section matLine>
-        <h3>Helping</h3>
-    </section>
-
-    <mat-list-item>
-        <a routerLink="/open-apps" matLine>
-            Can help with
-        </a>
-        <div matLine>All the (help) applications, I created.</div>
+    <mat-list-item [routerLinkActive]="['is-active']" routerLink="/open-reqs">
+        <mat-icon matListIcon> edit_calendar</mat-icon>
+        <h2 matLine>Requirements</h2>
+        <div matLine>Jobs created by me</div>
     </mat-list-item>
-    <mat-list-item>
-        <a routerLink="/fulfilled-apps" matLine>
-            Appointments
-        </a>
-        <div matLine>All my commitments.</div>
+    <mat-list-item [routerLinkActive]="['is-active']" routerLink="/fulfilled-reqs">
+        <mat-icon matListIcon>event</mat-icon>
+        <h2 matLine>Applications accepted</h2>
+        <div matLine>Accepted offers</div>
     </mat-list-item>
-
-</mat-list>
+    <div class='divider' matLine></div>
+    <mat-list-item [routerLinkActive]="['is-active']" routerLink="/open-apps">
+    <mat-icon matListIcon>insert_invitation</mat-icon>
+        <h2 matLine>Can help</h2>
+        <div matLine>Can offer</div>
+    </mat-list-item>
+    <div class='divider' matLine></div>
+    <mat-list-item [routerLinkActive]="['is-active']" routerLink="/fulfilled-apps">
+    <mat-icon matListIcon>calendar_month</mat-icon>
+        <h2 matLine>Appointments</h2>
+        <div matLine>Accepted requirements</div>
+    </mat-list-item>
+   </mat-list>

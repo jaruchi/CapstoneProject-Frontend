@@ -1,38 +1,130 @@
 <main>
   <section *ngIf="user.userName ===''">
-    <form class="form-container" [formGroup]="loginCred">
-      <mat-card>
-
-        <mat-card-header>
-          <mat-card-title></mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div class="row">
-            <div class="col-md-6">
+    <mat-tab-group>
+      <mat-tab label="Sign in">
+        <form class="form-container" [formGroup]="loginCred">
+          <mat-card>
+            <mat-card-content>
               <mat-form-field>
-                <input matInput maxlength="100" placeholder="Email" required formControlName="email">
+                <input matInput maxlength="100" placeholder="Email" required formControlName="emailAddress"
+                  type='email'>
               </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
               <mat-form-field>
                 <input type="password" matInput maxlength="30" placeholder="Password" required
                   formControlName="password">
               </mat-form-field>
-            </div>
-          </div>
+            </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-raised-button color="primary" (click)="login()">Submit</button>
+            </mat-card-actions>
+          </mat-card>
+        </form>
+      </mat-tab>
+      <mat-tab label="Sign up">
+        <form class="form-container" [formGroup]="loginCred">
+          <mat-card>
+            <mat-card-content>
+              <span>
+                <mat-form-field class="full-width">
+                  <mat-label>First Name</mat-label>
+                  <input matInput placeholder="First name" required formControlName="firstName">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput placeholder="Last name" required formControlName="lastName">
+                </mat-form-field>
+              </span>
+              <mat-form-field class="full-width">
+                <mat-label>Address</mat-label>
+                <input matInput maxlength="100" placeholder="Address" name="address" formControlName="address">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>City</mat-label>
+                <input matInput maxlength="100" placeholder="City" name="city" formControlName="city">
+              </mat-form-field>
 
+              <span>
+                <mat-form-field class="full-width">
+                  <mat-label>State</mat-label>
+                  <input type="zip" matInput maxlength="10" placeholder="State" formControlName="state">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>Zip Code</mat-label>
+                  <input type="zip" matInput maxlength="10" placeholder="Zip Code" formControlName="zipcode">
+                </mat-form-field>
+              </span>
+              <mat-form-field class="full-width">
+                <mat-label>Country</mat-label>
+                <input type="country" matInput maxlength="30" placeholder="Country" formControlName="country">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>Email Address</mat-label>
+                <input matInput maxlength="100" placeholder="Email" required formControlName="emailAddress"
+                  type='email'>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput maxlength="30" placeholder="Password" required
+                  formControlName="password">
+              </mat-form-field>
 
-        </mat-card-content>
-        <mat-card-actions  align="end"> 
-          <button mat-raised-button color="primary" (click)="login()">Submit</button>
-        </mat-card-actions>
-      </mat-card>
-    </form>
+            </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-raised-button color="primary" (click)="register()">Submit</button>
+            </mat-card-actions>
+          </mat-card>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+
   </section>
   <div *ngIf="user.userName !==''">
-    <h3>Hi {{user.userName}}!</h3>
-    <div class='mat-body-1'>you are logged in. </div>
+    <form class="form-container" [formGroup]="loginCred">
+      <mat-card>
+        <mat-card-header>Welcome {{user.userName}}!</mat-card-header>
+        <mat-card-content>
+          <span>
+            <mat-form-field class="full-width">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="First name" readonly=true formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="Last name" readonly=true formControlName="lastName">
+            </mat-form-field>
+          </span>
+          <mat-form-field class="full-width">
+            <mat-label>Address</mat-label>
+            <input matInput maxlength="100" placeholder="Address" name="addressLine" readonly=true
+              formControlName="addressLine">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>City</mat-label>
+            <input matInput maxlength="100" placeholder="City" name="city" readonly=true formControlName="city">
+          </mat-form-field>
+
+          <span>
+            <mat-form-field class="full-width">
+              <mat-label>State</mat-label>
+              <input type="zip" matInput maxlength="10" placeholder="State" formControlName="state" readonly=true>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label>Zip Code</mat-label>
+              <input type="zip" matInput maxlength="10" placeholder="Zip Code" formControlName="zipcode" readonly=true>
+            </mat-form-field>
+          </span>
+          <mat-form-field class="full-width">
+            <mat-label>Country</mat-label>
+            <input type="country" matInput maxlength="30" placeholder="Country" formControlName="country" readonly=true>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Email Address</mat-label>
+            <input matInput maxlength="100" placeholder="Email" readonly formControlName="emailAddress" type='email'>
+          </mat-form-field>
+
+        </mat-card-content>
+
+      </mat-card>
+    </form>
   </div>
 </main>

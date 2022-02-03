@@ -9,13 +9,24 @@ const HOST: string = '/pipe/';
   providedIn: 'root',
 })
 export class LoginService {
-  user: User = { id: 0, emailAddress: '', userName: '' };
+  user: User = {
+    id: 0,
+    emailAddress: '',
+    userName: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    zipCode: '',
+    country: '',
+    city: '',
+    state:'',
+  };
   token: LoginRespose | undefined;
 
   loginAPI: string = HOST + `auth/users/login`;
   loggedinAPI: string = HOST + `auth/users/isloggedin`;
 
-  //registerAPI: string = `${HOST}/auth/users/register`;
+  registerAPI: string = HOST + `auth/users/register`;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -35,6 +46,13 @@ export class LoginService {
         this.user.emailAddress = user.emailAddress;
         this.user.id = user.id;
         this.user.userName = user.userName;
+        this.user.address = user.address;
+        this.user.firstName = user.firstName;
+        this.user.lastName = user.lastName;
+        this.user.zipCode = user.zipCode;
+        this.user.country = user.country;
+        this.user.city = user.city;
+        this.user.state = user.state;
       });
   }
 
@@ -47,12 +65,10 @@ export class LoginService {
     this.router.navigate(['/']);
   }
 
-  // async register(name: string, email: string, password: string): Promise<void> {
-  //   const registerBody = { name: name, email: email, password: password };
-  //   this.http.post(this.registerAPI, registerBody).subscribe((r) => {
-  //     //this.token = lb;
-  //     this.getProfile();
-  //   });
-  //   this.router.navigate(['login']);
-  // }
+  async register(user: User | any): Promise<void> {
+    this.http.post(this.registerAPI, user).subscribe((r) => {
+      this.login(user.emailAddress, user.password);
+    });
+    this.router.navigate(['login']);
+  }
 }
