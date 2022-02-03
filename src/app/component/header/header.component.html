@@ -1,13 +1,19 @@
-<mat-toolbar>
-  <button mat-icon-button [disabled]="user.userName === ''" (click)="toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span><a routerLink="/">CUMI</a></span>
+<mat-toolbar color="primary">
+<span class="header" [routerLinkActive]="['is-active']" routerLink="/">CUMI</span>
+  <!-- <span><a routerLink="/">CUMI</a></span> -->
   <span class="example-spacer"></span>
-  <button mat-icon-button>
-    <span *ngIf="smartUser$|async as smartUser">{{smartUser.userName}} ({{smartUser.id}})</span>
-    <a routerLink="/login">
-      <mat-icon>person</mat-icon>
-    </a>
+  <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="0 != (smartUser$|async)?.id">
+    <mat-icon>more_vert</mat-icon>
   </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/login">
+      <mat-icon>face</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>

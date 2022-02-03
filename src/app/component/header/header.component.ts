@@ -15,11 +15,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(private loginSvc: LoginService) {}
   ngOnInit(): void {
-    // this.svc.init().subscribe((u) => (this.user = u));
     this.smartUser$ = this.loginSvc.init();
     this.smartUser$.subscribe((u) => (this.user = u));
   }
   toggle() {
     this.myaction.emit('');
+  }
+  logout() {
+    window.location.replace('/login');
   }
 }
