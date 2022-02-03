@@ -30,37 +30,37 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'req/:req-id/1', 
+    path: 'req/:req-id/:jobtype-id',
     component: TutorRequirementComponent,
   },
   {
-    path: 'app/:app-id/1',
+    path: 'app/:app-id/:jobtype-id',
     component: TutorApplicationComponent,
   },
-  {
-    path: 'req/:req-id/2', 
-    component: PetCareRequirementComponent,
-  },
-  {
-    path: 'app/:app-id/2',
-    component: PetCareApplicationComponent,
-  },
-  {
-    path: 'req/:req-id/3', 
-    component: BabySitRequirementComponent,
-  },
-  {
-    path: 'app/:app-id/3',
-    component: BabySitApplicationComponent,
-  },
-  {
-    path: 'req/:req-id/4', 
-    component: GardenCareRequirementComponent,
-  },
-  {
-    path: 'app/:app-id/4',
-    component: GardenCareApplicationComponent,
-  },
+  // {
+  //   path: 'req/:req-id/2',
+  //   component: PetCareRequirementComponent,
+  // },
+  // {
+  //   path: 'app/:app-id/2',
+  //   component: PetCareApplicationComponent,
+  // },
+  // {
+  //   path: 'req/:req-id/3',
+  //   component: BabySitRequirementComponent,
+  // },
+  // {
+  //   path: 'app/:app-id/3',
+  //   component: BabySitApplicationComponent,
+  // },
+  // {
+  //   path: 'req/:req-id/4',
+  //   component: GardenCareRequirementComponent,
+  // },
+  // {
+  //   path: 'app/:app-id/4',
+  //   component: GardenCareApplicationComponent,
+  // },
   {
     path: 'open-reqs',
     component: OpenRequirementsComponent,

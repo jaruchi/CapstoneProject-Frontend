@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Application } from 'src/app/model/application';
 import { Requirement } from 'src/app/model/requirement';
 import { ApiService } from 'src/app/services/api.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-tutor',
@@ -15,6 +16,7 @@ export class TutorApplicationComponent implements OnInit {
   curAppId!: number;
   curJobTypeId!: number;
   openedRequirementsForCurrJobType!: Requirement[];
+  application!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -23,30 +25,42 @@ export class TutorApplicationComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private snackBar: MatSnackBar
   ) {
-    this.curJobTypeId = 1;
+    this.curJobTypeId = 0;
     this.curAppId = 0;
+    this.applicationToFormData({
+      id: 0,
+      heading: '',
+      day: '',
+      subject: '',
+      level: '',
+      pets: '',
+      ageRange: '',
+      services: '',
+    });
   }
 
-  application = this.fb.group({
-    heading: [''],
-    day: [''],
-    subject: [''],
-    level: [''],
-    id: [0],
-  });
+  // application = this.fb.group({
+  //   heading: [''],
+  //   day: [''],
+  //   subject: [''],
+  //   level: [''],
+  //   id: [0],
+
+  //   pets: '',
+  //   ageRange: '',
+  //   services: '',
+  // });
 
   applicationToFormData(app: Application) {
-    // let appDesc = { day: '', subject: null, grade: null };
-    // try {
-    //   appDesc = JSON.parse(app.appDescription || '{}');
-    // } catch (e) {}
-
     this.application = this.fb.group({
       heading: [app.heading],
       day: [app.day],
       subject: [app.subject],
       level: [app.level],
       id: [app.id],
+      pets: [app.pets],
+      ageRange: [app.ageRange],
+      services: [app.services],
     });
   }
 
@@ -59,8 +73,11 @@ export class TutorApplicationComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe((params) => {
       this.curAppId = parseInt(params.get('app-id') || '0');
+      this.curJobTypeId = parseInt(params.get('jobtype-id') || '0');
       if (this.curAppId > 0) this.getAndFillAppData();
     });
+
+    //need to add getOthersOpenRequirementsByJobType
   }
 
   update() {
@@ -71,11 +88,10 @@ export class TutorApplicationComponent implements OnInit {
       day: fv.day,
       subject: fv.subject,
       level: fv.level,
-      pets: '',
-      ageRange: '',
-      services: '',
+      pets: fv.pets,
+      ageRange: fv.ageRange,
+      services: fv.services,
 
-      appDescription: JSON.stringify(fv),
     };
     this.apiSvc.updateApplication(app).subscribe((newApp) => {
       console.log('application updated');
@@ -98,10 +114,9 @@ export class TutorApplicationComponent implements OnInit {
       day: fv.day,
       subject: fv.subject,
       level: fv.level,
-      pets: '',
-      ageRange: '',
-      services: '',
-      //appDescription: JSON.stringify(fv),
+      pets: fv.pets,
+      ageRange: fv.ageRange,
+      services: fv.services,
     };
     this.apiSvc
       .createApplication(this.curJobTypeId, app)
@@ -117,12 +132,14 @@ export class TutorApplicationComponent implements OnInit {
       });
   }
 
+  
   acceptApplication(reqid: number) {
+    // accept application for requirement to be done in next iteration
     this.apiSvc
       .acceptAnApplicationForRequirement(reqid, this.curAppId)
-      .subscribe((newReq) => {
+      .subscribe((newApp) => {
         this.snackit('Congratulations!!! your application is accepted.');
-        const newRoute = `/fulfilled-reqs`;
+        const newRoute = `/fulfilled-apps`;/// changed
         this.router.navigate([newRoute]);
       });
   }
@@ -131,5 +148,9 @@ export class TutorApplicationComponent implements OnInit {
     this.snackBar.open(msg, undefined, {
       duration: 2000,
     });
+  }
+
+  format(day?: string): string {
+    return moment(day).format('MMM-DD-YYYY');
   }
 }

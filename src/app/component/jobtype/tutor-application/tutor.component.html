@@ -3,9 +3,20 @@
     <mat-card>
         <mat-card-header>
             <div mat-card-avatar>
-                <mat-icon>local_library</mat-icon>
+                <mat-icon *ngIf="curJobTypeId===0">work</mat-icon>
+                <mat-icon *ngIf="curJobTypeId===1">local_library</mat-icon>
+                <mat-icon *ngIf="curJobTypeId===3">crib</mat-icon>
+                <mat-icon *ngIf="curJobTypeId===4">yard</mat-icon>
+                <mat-icon *ngIf="curJobTypeId===2">pets</mat-icon>
             </div>
-            <mat-card-title>Applying for a Tutor</mat-card-title>
+            <mat-card-title *ngIf="curJobTypeId===0">Applying for ...</mat-card-title>
+            <mat-card-title *ngIf="curJobTypeId===1">Applying for a Tutor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </mat-card-title>
+            <mat-card-title *ngIf="curJobTypeId===2">Applying for help with pets</mat-card-title>
+            <mat-card-title *ngIf="curJobTypeId===3">Applying for Baby sitter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </mat-card-title>
+            <mat-card-title *ngIf="curJobTypeId===4">Applying for help with Gardening</mat-card-title>
+      
         </mat-card-header>
         <mat-card-content>
             <mat-form-field>
@@ -18,7 +29,7 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field *ngIf="curJobTypeId===1">
                 <mat-label>Subjects</mat-label>
                 <mat-select formControlName="subject">
                     <mat-option value="math">Maths</mat-option>
@@ -26,12 +37,33 @@
                     <mat-option value="science">English</mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field *ngIf="curJobTypeId===1">
                 <mat-label>Level</mat-label>
                 <mat-select formControlName="level">
                     <mat-option value="one">Elementary</mat-option>
                     <mat-option value="two">Middle</mat-option>
                     <mat-option value="two">High</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field *ngIf="curJobTypeId===3">
+                <mat-label>Age Range</mat-label>
+                <mat-select formControlName="ageRange">
+                    <mat-option value="range2">2-5</mat-option>
+                    <mat-option value="range6">5-10</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field *ngIf="curJobTypeId===4">
+                <mat-label>Service</mat-label>
+                <mat-select formControlName="services">
+                    <mat-option value="clean">Cleaning</mat-option>
+                    <mat-option value="flower">Flowering</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field *ngIf="curJobTypeId===2">
+                <mat-label>Pet</mat-label>
+                <mat-select formControlName="pets">
+                    <mat-option value="dog">Dog</mat-option>
+                    <mat-option value="cat">Cat</mat-option>
                 </mat-select>
             </mat-form-field>
         </mat-card-content>
@@ -42,7 +74,7 @@
         </mat-card-actions>
     </mat-card>
 </form>
-<div *ngIf="curAppId!=0">
+<!-- <div *ngIf="curAppId!=0">
     <mat-selection-list [multiple]="false">
         <mat-list-option *ngFor="let req of openedRequirementsForCurrJobType" [value]="">
             <mat-icon mat-list-icon>person</mat-icon>
@@ -56,4 +88,4 @@
         </mat-list-option>
     </mat-selection-list>
 
-</div>
+</div> -->

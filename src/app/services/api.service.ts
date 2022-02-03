@@ -28,6 +28,9 @@ const myFulfilledApps = HOST + 'api/match/applications';
 const acceptAnAppAPI = (reqid: number, appid: number): string =>
   HOST + `api/match/requirement/${reqid}/application/${appid}`;
 
+  // const acceptAReqAPI = (reqid: number, appid: number): string =>
+  // HOST + `api/match/application/${appid}/requirement/${reqid}`;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -212,4 +215,19 @@ export class ApiService {
     const API = acceptAnAppAPI(reqId, appId);
     return this.http.post<ReqAppCombination>(API, {}, options);
   }
+
+  // acceptRequirementForAnApplication(
+  //   appId: number,
+  //   reqId: number
+  // ): Observable<ReqAppCombination> {
+  //   const token = this.loginSvc.token;
+  //   const options = {
+  //     headers: {
+  //       Authorization: 'Bearer ' + token?.jwt,
+  //     },
+  //   };
+
+  //   const API = acceptAReqAPI(reqId, appId);
+  //   return this.http.post<ReqAppCombination>(API, {}, options);
+  // }
 }

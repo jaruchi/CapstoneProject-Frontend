@@ -25,7 +25,7 @@ export class TutorRequirementComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private snackBar: MatSnackBar
   ) {
-    this.curJobTypeId = 1;
+    this.curJobTypeId = 0;
     this.curReqId = 0;
     this.requirementToFormData({
       id: 0,
@@ -39,7 +39,7 @@ export class TutorRequirementComponent implements OnInit {
     });
   }
 
-  requirementToFormData(req: Requirement) { 
+  requirementToFormData(req: Requirement) {
     this.requirement = this.fb.group({
       title: [req.title],
       day: [req.day],
@@ -47,7 +47,8 @@ export class TutorRequirementComponent implements OnInit {
       level: [req.level],
       id: [req.id],
       pets: [req.pets],
-      ageRange : [req.ageRange]
+      ageRange: [req.ageRange],
+      services: [req.services],
     });
   }
 
@@ -60,14 +61,17 @@ export class TutorRequirementComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe((params) => {
       this.curReqId = parseInt(params.get('req-id') || '0');
-      if (this.curReqId > 0) this.getAndFillReqData();
-    });
+      this.curJobTypeId = parseInt(params.get('jobtype-id') || '0');
+      if (this.curReqId > 0) {
+        this.getAndFillReqData();
+      }
 
-    this.apiSvc
-      .getOthersOpenApplicationsByJobType(this.curJobTypeId)
-      .subscribe((apps) => {
-        this.openedApplicationsForCurrJobType = apps;
-      });
+      this.apiSvc
+        .getOthersOpenApplicationsByJobType(this.curJobTypeId)
+        .subscribe((apps) => {
+          this.openedApplicationsForCurrJobType = apps;
+        });
+    });
   }
 
   update() {
@@ -79,14 +83,13 @@ export class TutorRequirementComponent implements OnInit {
       day: fv.day,
       subject: fv.subject,
       level: fv.level,
-      pets: '',
-      ageRange: '',
-      services: '',
-
-      //reqDescription: JSON.stringify(fv),
+      pets: fv.pets,
+      ageRange: fv.ageRange,
+      services: fv.services,
     };
     this.apiSvc.updateRequirement(req).subscribe((newReq) => {
       this.snackit('Your requirement updated.');
+      //this.requirementToFormData(newReq);
       console.log('requirement updated');
     });
   }
@@ -107,11 +110,9 @@ export class TutorRequirementComponent implements OnInit {
       day: fv.day,
       subject: fv.subject,
       level: fv.level,
-      pets: '',
-      ageRange: '',
-      services: '',
-
-      //reqDescription: JSON.stringify(fv),
+      pets: fv.pets,
+      ageRange: fv.ageRange,
+      services: fv.services,
     };
     this.apiSvc
       .createRequirement(this.curJobTypeId, req)
