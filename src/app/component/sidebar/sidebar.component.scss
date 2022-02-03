@@ -1,19 +1,8 @@
-section {
-  margin-left: 1rem;
-  padding: 1rem 0 0 0;
-}
-
 .divider {
-  border-top: 1px solid gray;
+  border-top: 1px solid mat;
   opacity: 0.5;
 }
 
-.profile-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.is-active {
-  background-color: gray;
+.mat-list-base {
+  padding-top: 0;
 }

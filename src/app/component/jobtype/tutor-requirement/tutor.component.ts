@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 import { Application } from 'src/app/model/application';
 import { Requirement } from 'src/app/model/requirement';
 import { ApiService } from 'src/app/services/api.service';
@@ -27,23 +28,26 @@ export class TutorRequirementComponent implements OnInit {
     this.curJobTypeId = 1;
     this.curReqId = 0;
     this.requirementToFormData({
-      id: 0, title: '', day: '', subject: '',
-        level: '', pets: '', ageRange: '', services: ''
+      id: 0,
+      title: '',
+      day: '',
+      subject: '',
+      level: '',
+      pets: '',
+      ageRange: '',
+      services: '',
     });
   }
 
-  requirementToFormData(req: Requirement) {
-    // let reqDesc = { day: '', subject: null, grade: null };
-    // try {
-    //   reqDesc = JSON.parse(req.reqDescription || '{}');
-    // } catch (e) {}
-
+  requirementToFormData(req: Requirement) { 
     this.requirement = this.fb.group({
       title: [req.title],
       day: [req.day],
       subject: [req.subject],
       level: [req.level],
       id: [req.id],
+      pets: [req.pets],
+      ageRange : [req.ageRange]
     });
   }
 
@@ -137,5 +141,9 @@ export class TutorRequirementComponent implements OnInit {
     this.snackBar.open(msg, undefined, {
       duration: 2000,
     });
+  }
+
+  format(day?: string): string {
+    return moment(day).format('MMM-DD-YYYY');
   }
 }

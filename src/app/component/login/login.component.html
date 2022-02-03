@@ -1,3 +1,5 @@
+<div class='page-header'>&nbsp;</div>
+
 <main>
   <section *ngIf="user.userName ===''">
     <mat-tab-group>
@@ -36,11 +38,11 @@
               </span>
               <mat-form-field class="full-width">
                 <mat-label>Address</mat-label>
-                <input matInput maxlength="100" placeholder="Address" name="address" formControlName="address">
+                <input matInput maxlength="100" placeholder="Address" formControlName="address">
               </mat-form-field>
               <mat-form-field class="full-width">
                 <mat-label>City</mat-label>
-                <input matInput maxlength="100" placeholder="City" name="city" formControlName="city">
+                <input matInput maxlength="100" placeholder="City" formControlName="city">
               </mat-form-field>
 
               <span>
@@ -50,7 +52,7 @@
                 </mat-form-field>
                 <mat-form-field class="full-width">
                   <mat-label>Zip Code</mat-label>
-                  <input type="zip" matInput maxlength="10" placeholder="Zip Code" formControlName="zipcode">
+                  <input type="zip" matInput maxlength="10" placeholder="Zip Code" formControlName="zipCode">
                 </mat-form-field>
               </span>
               <mat-form-field class="full-width">
@@ -79,9 +81,9 @@
 
   </section>
   <div *ngIf="user.userName !==''">
+    <h1>Welcome {{user.userName}}!</h1>
     <form class="form-container" [formGroup]="loginCred">
       <mat-card>
-        <mat-card-header>Welcome {{user.userName}}!</mat-card-header>
         <mat-card-content>
           <span>
             <mat-form-field class="full-width">
@@ -95,12 +97,11 @@
           </span>
           <mat-form-field class="full-width">
             <mat-label>Address</mat-label>
-            <input matInput maxlength="100" placeholder="Address" name="addressLine" readonly=true
-              formControlName="addressLine">
+            <input matInput maxlength="100" placeholder="Address" readonly=true formControlName="address">
           </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>City</mat-label>
-            <input matInput maxlength="100" placeholder="City" name="city" readonly=true formControlName="city">
+            <input matInput maxlength="100" placeholder="City" readonly=true formControlName="city">
           </mat-form-field>
 
           <span>
@@ -110,7 +111,7 @@
             </mat-form-field>
             <mat-form-field class="full-width">
               <mat-label>Zip Code</mat-label>
-              <input type="zip" matInput maxlength="10" placeholder="Zip Code" formControlName="zipcode" readonly=true>
+              <input type="zip" matInput maxlength="10" placeholder="Zip Code" formControlName="zipCode" readonly=true>
             </mat-form-field>
           </span>
           <mat-form-field class="full-width">

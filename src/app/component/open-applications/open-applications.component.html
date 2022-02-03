@@ -10,15 +10,19 @@
     </div>
 </div>
 <mat-selection-list [multiple]="false">
-    <mat-list-option *ngFor="let application of applications$|async" class="application">
-        <div matLine>
-            <span>
-                <mat-icon>person</mat-icon>
-            </span>
-            <span>Job: {{application.jobType?.type}}</span>
-        </div>
-        <a matLine routerLink='/app/{{application.id}}/{{application.jobType?.id}}'>{{application.heading}}
-        </a>
-        <div>Day:  {{format(application.day)}}</div>
+    <mat-list-option ngClass="mat-card" *ngFor="let application of applications$|async" class="application"
+        routerLink='/app/{{application.id}}/{{application.jobType?.id}}'>
+
+
+        <mat-icon mat-list-icon>
+            <div>{{application.jobType?.iconName}}</div>
+        </mat-icon>
+        <h2 matLine>
+            {{application.heading}}
+        </h2>
+        <div matLine>on {{format(application.day)}}</div>
+        <div matLine>&nbsp;</div>
+        <div mat-body-2 side="right" matLine>{{application.jobType?.type}}</div>
+
     </mat-list-option>
 </mat-selection-list>

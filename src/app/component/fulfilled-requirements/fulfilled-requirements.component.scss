@@ -1,13 +1,8 @@
-mat-card {
-  min-height: 5rem;
-  margin: 1rem;
-}
-.req-tile {
-  padding: 1rem;
+mat-list-item {
+  margin-bottom: 1rem;
 }
 
-.req-match {
-  border: 1px solid orange;
-  border-radius: 0.5rem;
-  margin: 0.5rem;
+.req-title,
+.app-heading {
+  text-align: right;
 }

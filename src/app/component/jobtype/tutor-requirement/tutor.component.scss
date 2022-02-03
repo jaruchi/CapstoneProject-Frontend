@@ -1,26 +1,8 @@
-.req-form{
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-    align-items: center;
-}
-.full-width{
-    width: 100%;
+mat-list-item {
+  margin-bottom: 0.5rem;
 }
 
-.top-padding{
-    padding-top: 3px;
-}
-
-.margin-left mat-radio-button:not(:first-child){
-    margin-left:1rem;
-}
-
-.form-container{
-    margin: 4rem;
-}
-.content{
-        border: 1px solid orangered;
-        border-radius: 0.5rem;
-        margin: 0.5rem;
+mat-card-content {
+  display: flex;
+  flex-direction: column;
 }

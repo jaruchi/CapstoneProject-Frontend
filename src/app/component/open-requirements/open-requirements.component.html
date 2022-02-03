@@ -1,5 +1,4 @@
 <div class='page-header'>
-
   <mat-card-header>
     <mat-card-title>My Requirements</mat-card-title>
   </mat-card-header>
@@ -10,13 +9,17 @@
 </div>
 
 <mat-selection-list [multiple]="false" value="null">
-  <mat-list-option *ngFor="let req of requirements" class='requirement'>
+  <mat-list-option ngClass='mat-card' *ngFor="let req of requirements" class='requirement'
+    routerLink="/req/{{req.id}}/{{req.jobType?.id}}">
 
-    <mat-icon mat-list-icon>person</mat-icon>
-    <span matLine>Job: {{req.jobType?.type}}</span>
-    <a matLine routerLink="/req/{{req.id}}/{{req.jobType?.id}}">
-      {{req.title}} 
-    </a>
-    <div>Day: {{format(req.day)}}</div>
+    <mat-icon mat-list-icon>
+      <div>{{req.jobType?.iconName}}</div>
+    </mat-icon>
+    <h2 matLine>
+      {{req.title}}
+    </h2>
+    <div matLine>on {{format(req.day)}}</div>
+    <div matLine>&nbsp;</div>
+    <div mat-body-2 side="right" matLine>{{req.jobType?.type}}</div>
   </mat-list-option>
 </mat-selection-list>

@@ -8,18 +8,20 @@
   You do not have any appointments.
 </div>
 
-<mat-selection-list [multiple]="false" value="null">
-  <mat-list-option *ngFor="let req of requirements" class='req-match'>
-    <mat-icon mat-list-icon>person</mat-icon>
+<mat-list>
+  <mat-list-item ngClass='mat-card' *ngFor="let req of requirements">
+    <mat-icon mat-list-icon>{{req.requirement.jobType?.iconName}}</mat-icon>
 
     <div matLine>
-      {{req.application.user?.userName}} is helping you with {{req.application.jobType?.type}} Job
+      {{req.application.user?.userName}} is helping you with {{req.application.jobType?.type}}.
     </div>
-    <div matLine>
-      Requirement: {{req.requirement.title}}
+
+    <div matLine>&nbsp;</div>
+    <div matLine> You asked for {{req.requirement.title}}</div>
+    <div matLine>&nbsp;</div>
+    <div matLine class="req-title">
+      and accepted {{req.application.user?.firstName||req.application.user?.userName}}'s help
+      {{req.application.heading}}
     </div>
-    <div matLine>
-      Application: {{req.application.heading}}
-    </div>
-  </mat-list-option>
-</mat-selection-list>
+  </mat-list-item>
+</mat-list>

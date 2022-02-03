@@ -1,56 +1,39 @@
+<div class='page-header'>&nbsp;</div>
 <form class="form-container" [formGroup]="requirement">
     <mat-card>
-
         <mat-card-header>
+            <div mat-card-avatar>
+                <mat-icon>local_library</mat-icon>
+            </div>
             <mat-card-title>Looking for a Tutor</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <div class="row">
-                <div class="full-width">
-                    <mat-form-field class="full-width">
-                        <mat-label>Describe</mat-label>
-                        <textarea matInput formControlName="title" placeholder="Describe" required></textarea>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="col-md-6">
-                    </div>
-                    <div class="col-md-6">
-                        <mat-form-field class="full-width">
-                            <mat-label>Day</mat-label>
-                            <input formControlName="day" matInput [matDatepicker]="picker">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                        </mat-form-field>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <mat-form-field>
-                        <mat-label>Subjects</mat-label>
-                        <mat-select formControlName="subject">
-                            <mat-option value="math">Maths</mat-option>
-                            <mat-option value="science">Science</mat-option>
-                            <mat-option value="science">English</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-
-                </div>
-                <div class="col-md-6">
-                    <mat-form-field>
-                        <mat-label>Level</mat-label>
-                        <mat-select formControlName="grade">
-                            <mat-option value="one">Elementary</mat-option>
-                            <mat-option value="two">Middle</mat-option>
-                            <mat-option value="two">High</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
+            <mat-form-field>
+                <mat-label>Describe</mat-label>
+                <textarea matInput formControlName="title" placeholder="Describe" required></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Day</mat-label>
+                <input formControlName="day" matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Subjects</mat-label>
+                <mat-select formControlName="subject">
+                    <mat-option value="math">Maths</mat-option>
+                    <mat-option value="science">Science</mat-option>
+                    <mat-option value="science">English</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Level</mat-label>
+                <mat-select formControlName="grade">
+                    <mat-option value="one">Elementary</mat-option>
+                    <mat-option value="two">Middle</mat-option>
+                    <mat-option value="two">High</mat-option>
+                </mat-select>
+            </mat-form-field>
         </mat-card-content>
         <mat-card-actions align="end">
             <button mat-raised-button color="error" *ngIf="curReqId!=0" (click)="delete()">Delete</button>
@@ -59,26 +42,24 @@
         </mat-card-actions>
     </mat-card>
 </form>
+
 <div *ngIf="curReqId!=0">
-    <mat-selection-list [multiple]="false">
-        <div *ngIf="openedApplicationsForCurrJobType.length!=0" class='not-found'>
-            Applications for Tutor
-        </div>
-        <mat-list-option *ngFor="let app of openedApplicationsForCurrJobType" [value]="">
-            <div class="content">
-                
-                <mat-icon mat-list-icon>person</mat-icon>
-                <div matLine>
-                    {{app.heading}}
-                </div>
-                <div matLine> {{app.user?.userName}} </div>
+    <div class='page-header' *ngIf="openedApplicationsForCurrJobType.length!=0">
+        <h2>Applications for your requirement</h2>
+    </div>
+    <mat-list>
+
+        <mat-list-item *ngFor="let app of openedApplicationsForCurrJobType" ngClass='mat-card'>
+            <mat-icon mat-list-icon>{{app.jobType?.iconName}}</mat-icon>
+            <div matLine>
+                {{app.heading}}
             </div>
-            <div align="end" matLine>
-                <button mat-raised-button color="primary" (click)="acceptApplication(app.id)">Accept</button>
+            <div matLine> {{app.user?.userName}} </div>
+            <div matLine> Day: {{format(app.day)}} </div>
+            <div matLine ngClass='mat-card-actions' align='end'>
+                <button mat-flat-button color="primary" (click)="acceptApplication(app.id)">Accept</button>
             </div>
+        </mat-list-item>
 
-
-        </mat-list-option>
-
-    </mat-selection-list>
+    </mat-list>
 </div>
