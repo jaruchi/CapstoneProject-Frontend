@@ -26,6 +26,7 @@ import { BabySitApplicationComponent } from './component/jobtype/baby-sit-applic
 import { GardenCareApplicationComponent } from './component/jobtype/garden-care-application/garden-care-application.component';
 import { GardenCareRequirementComponent } from './component/jobtype/garden-care-requirement/garden-care-requirement.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

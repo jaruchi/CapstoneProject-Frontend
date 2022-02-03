@@ -6,9 +6,12 @@ export interface Requirement {
   id: number;
   title: string;
   reqDescription?: any;
-  createDate?: any;
-  expiredDate?: any;
-  modifiedDate?: any;
+  day?: string;
+  subject?: string;
+  level?: string;
+  pets?: string;
+  ageRange?: string;
+  services?: string;
   jobType?: JobType;
   user?: User;
 }

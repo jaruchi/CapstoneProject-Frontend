@@ -2,16 +2,18 @@
   <app-header (myaction)="toggle()"></app-header>
   <mat-drawer-container class='sidenav' #side_drawer *ngIf="user.userName !==''">
     <mat-drawer mode="side" [opened]="true">
+      <!-- sidebar component-->
       <app-sidebar></app-sidebar>
     </mat-drawer>
     <mat-drawer-content class='drawer-content' variant="primary">
       <div class='body'>
+        <!-- job selector component -->
         <router-outlet></router-outlet>
       </div>
     </mat-drawer-content>
   </mat-drawer-container>
-  <div class='please-login-first' *ngIf="user.userName===''">
-    <span>Please login!!!</span>
+  <div class='please-login-first' *ngIf="user.userName===''"> 
+    <!-- login component --> 
     <app-login></app-login>
   </div>
 </div>

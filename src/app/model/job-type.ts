@@ -1,5 +1,7 @@
 export interface JobType {
-    id: number;
-    type: string;
-    description: string;
+  id: number;
+  type: string;
+  description: string;
+  iconName?: string;
+  illustrationPath?: string;
 }

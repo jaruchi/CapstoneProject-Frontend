@@ -8,11 +8,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatTabsModule } from '@angular/material/tabs';
 
 const module_list = [
   MatButtonModule,
@@ -28,7 +29,8 @@ const module_list = [
   MatIconModule,
   MatInputModule,
   MatButtonToggleModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatTabsModule,
 ];
 
 @NgModule({
