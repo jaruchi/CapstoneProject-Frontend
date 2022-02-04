@@ -3,7 +3,7 @@ CUMI(Can You May I) Frontend
 
 ## Introduction
 A portal where a user can ask for help OR can provide help. It's an application where a user can be a job provider or can look for a job. This application is built for four categories of jobs:
-Tutor / Pet Care / Baby Sitting / Garden Care
+- Tutor / Pet Care / Baby Sitting / Garden Care
 
 This is the frontend of the application where a user have different forms according to their needs. Also there is a dynamic matching of the jobs as soon as user creates a requirement.
 
@@ -36,15 +36,15 @@ This portal is a single page application. It's backend is built usin Java and Sp
 [cumi](https://cu-mi.herokuapp.com/)
 
 ## How to run
-npm install
-npm build
-npm start
-http://localhost:8080
+* npm install
+* npm build
+* npm start
+* http://localhost:8080
 
 ## How to develop
-npm install
-ng serve
-http://localhost:4200
+* npm install
+* ng serve
+* http://localhost:4200
 
 ### Future Implementations
 - Adding Validations & error handling
