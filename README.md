@@ -1,40 +1,60 @@
-# Cumi
+## CUMI
+CUMI(Can You May I) Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+## Introduction
+A portal where a user can ask for help OR can provide help. It's an application where a user can be a job provider or can look for a job. This application is built for four categories of jobs:
+Tutor / Pet Care / Baby Sitting / Garden Care
+
+This is the frontend of the application where a user have different forms according to their needs. Also there is a dynamic matching of the jobs as soon as user creates a requirement.
+
+This portal is a single page application. It's backend is built usin Java and Spring Boot framework.
+[Backend](https://github.com/jaruchi/CapstoneProject-Backend)
+
+### Screens
+![Login Screen](/docs/login.png)
+![Dashboard](/docs/Dashboard.png)
+
+
+### Hurdles
+- Debugging the code to find the errors
+- Solving CORS issue
+- Matetial UI Style documentation 
+- Customize any thing with Material
+
+### Wins
+- A complete functioning project
+- Learned how to use Angular
+- Connection between frontend & backend
+
+### Technologies Used
+- Angular
+- TypeScript
+- JavaScript
+- Material (Theme/Styles)
+
+### Deployed on heroku
+[cumi](https://cu-mi.herokuapp.com/)
+
+## How to run
+npm install
+npm build
+npm start
+http://localhost:8080
+
+## How to develop
+npm install
+ng serve
+http://localhost:4200
+
+### Future Implementations
+- Adding Validations & error handling
+- Dynamically show available applications for a requirement
+- Unit testing
+- Having dynamic fields on a form according to the job types
 
 # Resources
+- [Angular Guide](https://angular.io/guide/build)
+- [Material Tutorial](https://www.youtube.com/watch?v=jUfEn032IL8)
+- [How to Deploy](https://medium.com/geekculture/how-to-easily-deploy-your-first-angular-app-on-heroku-65dd546)
+- [Reactive Forms](https://codehandbook.org/how-to-create-angular-material-reactive-form/)
 
-- https://www.youtube.com/watch?v=jUfEn032IL8
-- https://stackblitz.com/edit/angular-material-based-login-form?file=src%2Fstyles.css
-- https://blog.angular-university.io/angular-http/
-- https://codehandbook.org/how-to-create-angular-material-reactive-form/
-- https://www.baeldung.com/spring-cors
-- https://stackoverflow.com/questions/35531661/using-env-variable-in-spring-boots-application-properties
-- https://medium.com/geekculture/how-to-easily-deploy-your-first-angular-app-on-heroku-65dd546c8181
-  (do not add heroku-postbuild )
-- https://www.twilio.com/blog/node-js-proxy-server
-- https://angular.io/guide/build
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
