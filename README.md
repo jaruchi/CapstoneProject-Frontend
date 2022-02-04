@@ -20,6 +20,7 @@ This portal is a single page application. It's backend is built using Java and S
 - Solving CORS issue
 - Matetial UI Style documentation 
 - Customize any thing with Material
+- Deploying
 
 ### Wins
 - A complete functioning project
