@@ -19,13 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './component/register/register.component';
 import { FulfilledRequirementsComponent } from './component/fulfilled-requirements/fulfilled-requirements.component';
 import { FulfilledApplicationsComponent } from './component/fulfilled-applications/fulfilled-applications.component';
-import { PetCareApplicationComponent } from './component/jobtype/pet-care-application/pet-care-application.component';
-import { PetCareRequirementComponent } from './component/jobtype/pet-care-requirement/pet-care-requirement.component';
-import { BabySitRequirementComponent } from './component/jobtype/baby-sit-requirement/baby-sit-requirement.component';
-import { BabySitApplicationComponent } from './component/jobtype/baby-sit-application/baby-sit-application.component';
-import { GardenCareApplicationComponent } from './component/jobtype/garden-care-application/garden-care-application.component';
-import { GardenCareRequirementComponent } from './component/jobtype/garden-care-requirement/garden-care-requirement.component';
-
 
 @NgModule({
   declarations: [
@@ -41,12 +34,6 @@ import { GardenCareRequirementComponent } from './component/jobtype/garden-care-
     RegisterComponent,
     FulfilledRequirementsComponent,
     FulfilledApplicationsComponent,
-    PetCareApplicationComponent,
-    PetCareRequirementComponent,
-    BabySitRequirementComponent,
-    BabySitApplicationComponent,
-    GardenCareApplicationComponent,
-    GardenCareRequirementComponent,
   ],
   imports: [
     BrowserModule,

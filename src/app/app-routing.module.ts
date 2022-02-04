@@ -3,12 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { FulfilledApplicationsComponent } from './component/fulfilled-applications/fulfilled-applications.component';
 import { FulfilledRequirementsComponent } from './component/fulfilled-requirements/fulfilled-requirements.component';
 import { JobselectorComponent } from './component/jobselector/jobselector.component';
-import { BabySitApplicationComponent } from './component/jobtype/baby-sit-application/baby-sit-application.component';
-import { BabySitRequirementComponent } from './component/jobtype/baby-sit-requirement/baby-sit-requirement.component';
-import { GardenCareApplicationComponent } from './component/jobtype/garden-care-application/garden-care-application.component';
-import { GardenCareRequirementComponent } from './component/jobtype/garden-care-requirement/garden-care-requirement.component';
-import { PetCareApplicationComponent } from './component/jobtype/pet-care-application/pet-care-application.component';
-import { PetCareRequirementComponent } from './component/jobtype/pet-care-requirement/pet-care-requirement.component';
 import { TutorApplicationComponent } from './component/jobtype/tutor-application/tutor.component';
 import { TutorRequirementComponent } from './component/jobtype/tutor-requirement/tutor.component';
 import { LoginComponent } from './component/login/login.component';
@@ -37,30 +31,6 @@ const routes: Routes = [
     path: 'app/:app-id/:jobtype-id',
     component: TutorApplicationComponent,
   },
-  // {
-  //   path: 'req/:req-id/2',
-  //   component: PetCareRequirementComponent,
-  // },
-  // {
-  //   path: 'app/:app-id/2',
-  //   component: PetCareApplicationComponent,
-  // },
-  // {
-  //   path: 'req/:req-id/3',
-  //   component: BabySitRequirementComponent,
-  // },
-  // {
-  //   path: 'app/:app-id/3',
-  //   component: BabySitApplicationComponent,
-  // },
-  // {
-  //   path: 'req/:req-id/4',
-  //   component: GardenCareRequirementComponent,
-  // },
-  // {
-  //   path: 'app/:app-id/4',
-  //   component: GardenCareApplicationComponent,
-  // },
   {
     path: 'open-reqs',
     component: OpenRequirementsComponent,
