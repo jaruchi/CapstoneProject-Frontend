@@ -7,11 +7,18 @@
         <form class="form-container" [formGroup]="loginCred">
           <mat-card>
             <mat-card-content>
-              <mat-form-field>
-                <input matInput maxlength="100" placeholder="Email" required formControlName="emailAddress"
-                  type='email'>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput maxlength="100" required formControlName="emailAddress" type='email'>
+                <mat-error *ngIf="loginCred.hasError('emailAddress') && !loginCred.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="loginCred.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
               </mat-form-field>
-              <mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
                 <input type="password" matInput maxlength="30" placeholder="Password" required
                   formControlName="password">
               </mat-form-field>
@@ -29,35 +36,35 @@
               <span>
                 <mat-form-field class="full-width">
                   <mat-label>First Name</mat-label>
-                  <input matInput placeholder="First name" required formControlName="firstName">
+                  <input matInput placeholder="First name" minlength="1" required formControlName="firstName">
                 </mat-form-field>
                 <mat-form-field class="full-width">
                   <mat-label>Last Name</mat-label>
-                  <input matInput placeholder="Last name" required formControlName="lastName">
+                  <input matInput placeholder="Last name" minlength="1" required formControlName="lastName">
                 </mat-form-field>
               </span>
               <mat-form-field class="full-width">
                 <mat-label>Address</mat-label>
-                <input matInput maxlength="100" placeholder="Address" formControlName="address">
+                <input matInput maxlength="100" minlength="5" placeholder="Address" formControlName="address">
               </mat-form-field>
               <mat-form-field class="full-width">
                 <mat-label>City</mat-label>
-                <input matInput maxlength="100" placeholder="City" formControlName="city">
+                <input matInput maxlength="100" minlength="5" placeholder="City" formControlName="city">
               </mat-form-field>
 
-              <span>
-                <mat-form-field class="full-width">
-                  <mat-label>State</mat-label>
-                  <input type="zip" matInput maxlength="10" placeholder="State" formControlName="state">
-                </mat-form-field>
-                <mat-form-field class="full-width">
-                  <mat-label>Zip Code</mat-label>
-                  <input type="zip" matInput maxlength="10" placeholder="Zip Code" formControlName="zipCode">
-                </mat-form-field>
-              </span>
+              <mat-form-field class="full-width">
+                <mat-label>State</mat-label>
+                <input matInput maxlength="10" minlength="2" placeholder="State" formControlName="state">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>Zip Code</mat-label>
+                <input type=number pattern="[0-9]{5}" matInput max-length="5" minlength="5" placeholder="Zip Code"
+                  formControlName="zipCode">
+              </mat-form-field>
               <mat-form-field class="full-width">
                 <mat-label>Country</mat-label>
-                <input type="country" matInput maxlength="30" placeholder="Country" formControlName="country">
+                <input type="country" minlength="5" matInput maxlength="30" placeholder="Country"
+                  formControlName="country">
               </mat-form-field>
               <mat-form-field class="full-width">
                 <mat-label>Email Address</mat-label>

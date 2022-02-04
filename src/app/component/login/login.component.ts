@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Subject } from 'rxjs';
 import { User } from 'src/app/model/user';
 import { LoginService } from 'src/app/services/login.service';
@@ -20,7 +25,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.loginCred = new FormGroup({
-      emailAddress: new FormControl(),
+      emailAddress: new FormControl('', Validators.email),
       firstName: new FormControl(),
       lastName: new FormControl(),
       address: new FormControl(),
@@ -36,7 +41,10 @@ export class LoginComponent implements OnInit {
     this.loginSvc.init().subscribe((u) => {
       this.user = u;
       this.loginCred = new FormGroup({
-        emailAddress: new FormControl(u.emailAddress),
+        emailAddress: new FormControl(u.emailAddress, [
+          Validators.required,
+          Validators.email,
+        ]),
         firstName: new FormControl(u.firstName),
         lastName: new FormControl(u.lastName),
         address: new FormControl(u.address),
@@ -44,8 +52,12 @@ export class LoginComponent implements OnInit {
         state: new FormControl(u.state),
         country: new FormControl(u.country),
         zipCode: new FormControl(u.zipCode),
-        password: new FormControl(),
+        password: new FormControl('', [
+          Validators.required,
+          Validators.minLength(4),
+        ]),
       });
+      
     });
   }
 

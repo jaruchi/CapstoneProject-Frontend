@@ -7,8 +7,12 @@
         <div matLine>{{user.emailAddress}}</div>
         <div matLine></div>
     </mat-list-option>
-    <mat-list-option disabled="true">
-        <div class='divider' matLine></div>
+    <mat-list-option routerLink="/" [routerLinkActive]="['is-active']"> 
+        <mat-icon matListIcon>
+            home
+        </mat-icon>
+        <h1 matLine class='home'>C.U.M.I</h1> 
+
     </mat-list-option>
     <mat-list-option [routerLinkActive]="['is-active']" routerLink="/open-reqs">
         <mat-icon matListIcon> edit_calendar</mat-icon>

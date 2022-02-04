@@ -1,5 +1,7 @@
 <mat-toolbar color="primary">
-<span class="header" [routerLinkActive]="['is-active']" routerLink="/">CUMI</span>
+  <!-- <mat-icon class='home icon' routerLink="/">home</mat-icon> -->
+  <span class="example-spacer"></span>
+  <span routerLink="/">C.U.M.I</span>
   <!-- <span><a routerLink="/">CUMI</a></span> -->
   <span class="example-spacer"></span>
   <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="0 != (smartUser$|async)?.id">
