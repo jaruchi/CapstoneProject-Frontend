@@ -7,8 +7,8 @@ A portal where a user can ask for help OR can provide help. It's an application 
 
 This is the frontend of the application where a user have different forms according to their needs. Also there is a dynamic matching of the jobs as soon as user creates a requirement.
 
-This portal is a single page application. It's backend is built usin Java and Spring Boot framework.
-[Backend](https://github.com/jaruchi/CapstoneProject-Backend)
+This portal is a single page application. It's backend is built using Java and Spring Boot framework.
+- [Backend](https://github.com/jaruchi/CapstoneProject-Backend)
 
 ### Screens
 ![Login Screen](/docs/login.png)
